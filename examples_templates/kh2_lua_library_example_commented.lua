@@ -10,7 +10,7 @@ local canExecute = false -- Used to stop script from running if game not detecte
 function _OnInit() -- Runs during game initialization, only once
 	if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == "ENGINE" then --PCSX2
 		canExecute = true -- Set to true if game is detected
-		vars = require("KH2Emulator") -- |vars = require("KH2Emulator")| imports the library to be used in this script.
+		vars = require("KH2Emulator") -- `vars = require("KH2Emulator")` imports the library to be used in this script.
 		print('KH2 Library Example - Emulator')
 	elseif GAME_ID == 0x431219CC and ENGINE_TYPE == 'BACKEND' then --PC
 		canExecute = true
