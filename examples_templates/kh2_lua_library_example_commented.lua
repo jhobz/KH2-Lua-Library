@@ -1,3 +1,6 @@
+-- This example lua assumes that the io_packages folder has 4 lua library files:
+-- KH2Emulator.lua, KH2EpicGamesGlobal.lua, KH2SteamGlobal.lua, KH2SteamJP.lua
+
 LUAGUI_NAME = 'KH2 Lua Library Example Commented'
 LUAGUI_AUTH = 'Alios'
 LUAGUI_DESC = 'An example lua for learning how to use the kh2 library'
@@ -7,7 +10,7 @@ local canExecute = false -- Used to stop script from running if game not detecte
 function _OnInit() -- Runs during game initialization, only once
 	if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == "ENGINE" then --PCSX2
 		canExecute = true -- Set to true if game is detected
-		vars = require("KH2Emulator") -- |vars = require("Library File of game version")| imports the library to be used in this script. Note how it only imports the file for the game version we detected
+		vars = require("KH2Emulator") -- |vars = require("KH2Emulator")| imports the library to be used in this script.
 		print('KH2 Library Example - Emulator')
 	elseif GAME_ID == 0x431219CC and ENGINE_TYPE == 'BACKEND' then --PC
 		canExecute = true
