@@ -1,3 +1,4 @@
+--Some "KH2 Steam Global" Variables
 vars = {
 	Now = 0x0717008, --Current Location
 	Sve = 0x2A0C4C0,  --Saved Location
