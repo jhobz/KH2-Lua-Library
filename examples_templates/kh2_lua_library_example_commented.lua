@@ -37,8 +37,8 @@ function _OnFrame() -- Code here runs once per frame, game will wait for code to
 	if canExecute then -- Only allows code to run if game version is detected (when canExecute is true)
 	
 	-- You can reference the variables from the KH2 Lua Library like this (Space Paranoids Post-Story Save code pulled from GoA Lua):
-	PrevPlace = ReadShort(vars.Now+0x30)
-	if ReadByte(vars.Save+0x1EBE) > 0 then -- vars.Save uses the "Save" variable value from whichever Lua Library we imported 
+	PrevPlace = ReadShort(vars.Now+0x30) -- `vars.Now` uses the "Now" variable from whichever Lua library we imported
+	if ReadByte(vars.Save+0x1EBE) > 0 then -- `vars.Save` uses the "Save" variable value from whichever Lua library we imported 
 		if PrevPlace == 0x0011 then
 			WriteByte(vars.Save+0x1EBE,1)
 		elseif PrevPlace == 0x0511 then
