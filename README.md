@@ -19,7 +19,7 @@ vars = {
 }
 return vars
 ```
-Once its placed in the io_packages folder, I can import and reference it in my own lua like this:
+Once its placed in the io_packages folder, you can import and reference it in your own lua like this:
 ```
 vars = require("KH2EpicGamesGlobal") -- Importing the Library
 PrevPlace = ReadShort(vars.Now+0x30) -- vars.Now references the "Now" variable from our Library
