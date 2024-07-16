@@ -1,0 +1,42 @@
+vars = {
+		Now = 0x032BAE0 --Current Location
+		Sve = 0x1D5A970 --Saved Location
+		Save = 0x032BB30 --Save File
+		Obj0Pointer = 0x1D5BA10 --00objentry.bin Pointer Address
+		Sys3Pointer = 0x1C61AF8 --03system.bin Pointer Address
+		Btl0Pointer = 0x1C61AFC --00battle.bin Pointer Address
+		ARDPointer  = 0x034ECF4 --ARD Pointer Address
+		Music = 0x0347D34 --Background Music
+		Pause = 0x0347E08 --Ability to Pause
+		React = 0x1C5FF4E --Reaction Command
+		Cntrl = 0x1D48DB8 --Sora Controllable
+		Timer = 0x0349DE8
+		Songs = 0x035DAC4 --Atlantica Stuff
+		GScre = 0x1F8039C --Gummi Score
+		GMdal = 0x1F803C0 --Gummi Medal
+		GKill = 0x1F80856 --Gummi Kills
+		CamTyp = 0x0348750 --Camera Type
+		GamSpd = 0x0349E0C --Game Speed
+		CutNow = 0x035DE20 --Cutscene Timer
+		CutLen = 0x035DE28 --Cutscene Length
+		CutSkp = 0x035DE08 --Cutscene Skip
+		BtlTyp = 0x1C61958 --Battle Status (Out-of-Battle, Regular, Forced)
+		BtlEnd = 0x1D490C0 --End-of-Battle camera & signal
+		TxtBox = 0x1D48D54 --Last Displayed Textbox
+		DemCln = 0x1D48DEC --Demyx Clone Status (might have to do with other mission status/signal?)
+		Slot1    = 0x1C6C750 --Unit Slot 1
+		NextSlot = 0x268
+		Point1   = 0x1D48EFC
+		NxtPoint = 0x38
+		Gauge1   = 0x1D48FA4
+		NxtGauge = 0x34
+		Menu1    = 0x1C5FF18 --Menu 1 (main command menu)
+		NextMenu = 0x4
+		Menu2 = Menu1 + NextMenu
+		Obj0 = ReadInt(Obj0Pointer)
+		Sys3 = ReadInt(Sys3Pointer)
+		Btl0 = ReadInt(Btl0Pointer)
+		MSN = 0x04FA440
+}
+
+return vars
