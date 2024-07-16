@@ -14,7 +14,7 @@ kh2/
 For example, lets say you had a library file like this (named KH2EpicGamesGlobal.lua):
 ```
 vars = {
-  Now = 0x0716DF8
+  Now = 0x0716DF8,
   Save = 0x09A92F0
 }
 return vars
