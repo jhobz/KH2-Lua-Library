@@ -27,3 +27,8 @@ if PrevPlace == 0x0011 then
   WriteByte(vars.Save+0x1EBE,1) -- vars.Save references the "Save" variable from our Library
 end
 ```
+
+# Benefits To Using The Library
+One of the most apparent benefits to using a Lua Library for KH2, is that if you write your lua scripts correctly **you shouldn't have to update individual scripts after the game receives a patch.**
+
+For example, let's say we have a library for each game version that are managed and updated by the community. After the game recieves a patch all that needs to be done is for the base libraries to have their variables updated. Once the libraries are updated, all a user has to do is get the updated library files and all of their lua's should work again. A well organized/commented library also makes it easier for new devs to jump in and make their own mods AND it makes all of those mods immedaitely compatible with every version of the game. You don't need to own every version of the game if the variable you're using is already in the libraries! Including the libraries also wont interfer with any mods that choose not to use them, which is always a plus. 
