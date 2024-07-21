@@ -11,7 +11,7 @@ kh2/
 
 ```
 
-For example, lets say you had a library file like this (named KH2EpicGamesGlobal.lua):
+For example, lets say you had a library file like this (named KH2EpicGlobal.lua):
 ```
 vars = {
   Now = 0x0716DF8,
