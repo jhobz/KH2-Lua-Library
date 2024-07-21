@@ -13,7 +13,7 @@ function _OnInit()
 	elseif GAME_ID == 0x431219CC and ENGINE_TYPE == 'BACKEND' then --PC
 		canExecute = true
 		if ReadByte(cv.EpicGlobal) == cv.EpicGlobalValue then --EGS Global
-			vars = require("KH2EpicGamesGlobal")
+			vars = require("KH2EpicGlobal")
 			ConsolePrint('KH2 Library Example - Epic Games Global')
 		elseif ReadByte(cv.SteamGlobal) == cv.SteamGlobalValue then --Steam Global
 			vars = require("KH2SteamGlobal")
