@@ -1,5 +1,5 @@
 --Some "KH2 Steam Global" Variables
-vars = {
+return {
 	Now = 0x0717008, --Current Location
 	Sve = 0x2A0C4C0,  --Saved Location
 	Save = 0x09A9830, --Save File
@@ -38,5 +38,3 @@ vars = {
 	Btl0 = ReadLong(Btl0Pointer),
 	MSN = 0x0BF3340
 }
-
-return vars
