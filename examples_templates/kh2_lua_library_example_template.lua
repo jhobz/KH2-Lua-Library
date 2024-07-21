@@ -25,8 +25,7 @@ function _OnInit()
 			canExecute = false
 			ConsolePrint('KH2 not detected, not running script')
 		end
-	else
-		ConsolePrint('KH2 not detected, not running script')
+	else print('KH2 not detected, not running script')
 	end
 end
 
