@@ -1,4 +1,5 @@
 return	{
+	-- Base Values ----------------------------------------------------------------
 	Now = 0x0717008, 			--Current Location
 	Sve = 0x2A0C4C0,  			--Save Location
 	Save = 0x09A9830, 			--Save File
@@ -304,15 +305,15 @@ return	{
 	ShamansRelicPlus = 0x09A9830 + 0x36B6,
 	AkashicRecordPlus = 0x09A9830 + 0x36B7,
 	-- Bitmask Inventory Items (Byte) -- Add the value of the items you want to add to inventory. ie: Having valor and wisdom form would be 0x6. Only wisdom form and baseball charm would be 0x12, etc ----
-	Section1 = 0x09A9830 + 0x36C0, -- (1)Ukulele Charm, (2)Valor Form, (4)Wisdom Form, (8)Baseball Charm, (10)Final Form, (20)Anti Form, (40)Master Form, (80)Navigational Map
-	Section2 = 0x09A9830 + 0x36C1, -- (1)Castle Map, (2)Basement Map, (4)Castle Walls Map, (20)The Interceptor Map, (40)Encampment Area Map, (80)Village Area Map
-	Section3 = 0x09A9830 + 0x36C2, -- (1)Cornerstone Hill Map, (2)Windows of Time Map 2, (4)Lilliput Map, (8)Building Site Map, (10)Mickey's House Map, (20)Disney Castle Map, (40)Agrabah Map, (80)Cave of Wonders Map
-	Section4 = 0x09A9830 + 0x36C3, -- (1)Ruins Map, (2)Undersea Kingdom Map, (4)Starry Hill Map, (8)100 Acre Wood Map, (10)Rabbit's Howse Map, (20)Piglet's Howse Map, (40)Kanga's Howse Map, (80)Spooky Cave Map
-	Section5 = 0x09A9830 + 0x36C4, -- (1)Palace Map, (2)Coliseum Map, (4)Underworld Map, (8)Caverns Map, (10)Lamp Charm, (20)Feather Charm, (40)Report 1, (80)Report 2
-	Section6 = 0x09A9830 + 0x36C5, -- (1)Report 3, (2)Report 4, (4)Report 5, (8)Report 6, (10)Report 7, (20)Report 8, (40)Report 9, (80)Report 10
-	Section7 = 0x09A9830 + 0x36C6, -- (1)Report 11, (2)Report 12, (4)Report 13
-	Section8 = 0x09A9830 + 0x36C7, -- (4)Halloween Town Map, (8)Naval Map, (10)Pride Rock Map, (20)Marketplace Map, (40)Pit Cell Area Map, (80)Twilight Town Map
-	Section9 = 0x09A9830 + 0x36C8, -- (1)Dark City Map, (2)The Black Pearl Map, (4)Isla de Muerta Map, (8)Ship Graveyard Map, (10)Christmas Town Map, (20)Curly Hill Map, (40)Oasis Map, (80)Savannah Map
-	Section10 = 0x09A9830 + 0x36C9, -- (1)Castle Perimeter Map, (2)The Great Maw Map, (4)I/O Tower Map, (8)Central Computer Core Map, (10)Solar Sailer Simulation Map, (20)Windows of Time Map, (40)Sunset Hill Map, (80)Mansion Map
-	Section11 = 0x09A9830 + 0x36CA, -- (1)Tower Map, (2)DH Map, (4)Castle that Never Was Map, (8)Limit Form, (10)Dark Remembrance Map, (20)Depths of Remembrance Map, (80)Garden of Assemblage Map
+	ItemSet1 = 0x09A9830 + 0x36C0, -- (1)Ukulele Charm, (2)Valor Form, (4)Wisdom Form, (8)Baseball Charm, (10)Final Form, (20)Anti Form, (40)Master Form, (80)Navigational Map
+	ItemSet2 = 0x09A9830 + 0x36C1, -- (1)Castle Map, (2)Basement Map, (4)Castle Walls Map, (20)The Interceptor Map, (40)Encampment Area Map, (80)Village Area Map
+	ItemSet3 = 0x09A9830 + 0x36C2, -- (1)Cornerstone Hill Map, (2)Windows of Time Map 2, (4)Lilliput Map, (8)Building Site Map, (10)Mickey's House Map, (20)Disney Castle Map, (40)Agrabah Map, (80)Cave of Wonders Map
+	ItemSet4 = 0x09A9830 + 0x36C3, -- (1)Ruins Map, (2)Undersea Kingdom Map, (4)Starry Hill Map, (8)100 Acre Wood Map, (10)Rabbit's Howse Map, (20)Piglet's Howse Map, (40)Kanga's Howse Map, (80)Spooky Cave Map
+	ItemSet5 = 0x09A9830 + 0x36C4, -- (1)Palace Map, (2)Coliseum Map, (4)Underworld Map, (8)Caverns Map, (10)Lamp Charm, (20)Feather Charm, (40)Report 1, (80)Report 2
+	ItemSet6 = 0x09A9830 + 0x36C5, -- (1)Report 3, (2)Report 4, (4)Report 5, (8)Report 6, (10)Report 7, (20)Report 8, (40)Report 9, (80)Report 10
+	ItemSet7 = 0x09A9830 + 0x36C6, -- (1)Report 11, (2)Report 12, (4)Report 13
+	ItemSet8 = 0x09A9830 + 0x36C7, -- (4)Halloween Town Map, (8)Naval Map, (10)Pride Rock Map, (20)Marketplace Map, (40)Pit Cell Area Map, (80)Twilight Town Map
+	ItemSet9 = 0x09A9830 + 0x36C8, -- (1)Dark City Map, (2)The Black Pearl Map, (4)Isla de Muerta Map, (8)Ship Graveyard Map, (10)Christmas Town Map, (20)Curly Hill Map, (40)Oasis Map, (80)Savannah Map
+	ItemSet10 = 0x09A9830 + 0x36C9, -- (1)Castle Perimeter Map, (2)The Great Maw Map, (4)I/O Tower Map, (8)Central Computer Core Map, (10)Solar Sailer Simulation Map, (20)Windows of Time Map, (40)Sunset Hill Map, (80)Mansion Map
+	ItemSet11 = 0x09A9830 + 0x36CA, -- (1)Tower Map, (2)DH Map, (4)Castle that Never Was Map, (8)Limit Form, (10)Dark Remembrance Map, (20)Depths of Remembrance Map, (80)Garden of Assemblage Map
 }
