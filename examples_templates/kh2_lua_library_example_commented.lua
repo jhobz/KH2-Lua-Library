@@ -25,9 +25,7 @@ function _OnInit() -- Runs during game initialization, only once
 			canExecute = false
 			ConsolePrint('KH2 not detected, not running script')
 		end
-	else
-		canExecute = false
-		ConsolePrint('KH2 not detected, not running script')
+	else print('KH2 not detected, not running script')
 	end
 end
 
