@@ -1,0 +1,24 @@
+title: KH2 Lua Library v1
+originalAuthor: aliosgaming/equations19
+description: Lua scripts designed to be included by other Lua-based KH2 mods.
+assets:
+- name: scripts/io_packages/kh2lib.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib.lua
+- name: scripts/io_packages/KH2Emulator.lua
+  method: copy
+  source:
+  - name: io_packages/KH2Emulator.lua
+- name: scripts/io_packages/KH2EpicGlobal.lua
+  method: copy
+  source:
+  - name: io_packages/KH2EpicGlobal.lua
+- name: scripts/io_packages/KH2SteamGlobal.lua
+  method: copy
+  source:
+  - name: io_packages/KH2SteamGlobal.lua
+- name: scripts/io_packages/KH2SteamJP.lua
+  method: copy
+  source:
+  - name: io_packages/KH2SteamJP.lua
