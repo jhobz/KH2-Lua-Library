@@ -20,93 +20,16 @@ Including the library also won’t interfere with any mods that choose not to us
 
 ## Setup
 
-For LuaBackend, place all the library files into a folder called `io_packages` which must be located **inside** the
-folder containing your Lua scripts.
+The preferred method is to install this mod via OpenKH Mods Manager, which allows for easy updating of the mod in the
+future. Enter `KH2FM-Mods-equations19/KH2-Lua-Library` into the text box for `Add a new mod from GitHub` and then click
+`Install`.
 
-## Importing the Library
+If you do not use OpenKH Mods Manager, copy the entire `io_packages` folder into the folder that contains your other Lua
+scripts.
 
-Start with one of the template files included in this repository, or add these lines to your Lua script at the beginning
-of your `_OnInit` function:
+## Developer Docs
 
-```lua
-kh2lib = require("kh2lib")
-RequireKH2LibraryVersion(1)
-```
-
-and, optionally:
-
-```lua
-RequirePCGameVersion()
-```
-
-The first line imports the KH2 Lua Library into your script, detects which game version is running, and assigns a table
-of values to the name `kh2lib`. You can use an alternate name besides `kh2lib`, but `kh2lib` is recommended for
-consistency between scripts using the library.
-
-The second line informs the library that your script expects a KH2 Lua Library version of at least 1, since it depends
-on values added in version 1. As newer versions of the library are released, scripts may declare that they require a
-newer version of the library.
-
-The third (optional) line informs the library that your script is only written for the PC ports of KH2 and should not be
-allowed to execute when, say, on an emulator version of KH2.
-
-If the library determines that your script should be allowed to execute based on all of the above criteria, the value of
-`kh2lib.CanExecute` will be `true`. Scripts can check this value within their `_OnFrame` function or elsewhere and
-should not run any other code if the value is `false`.
-
-```lua
-function _OnInit()
-    kh2lib = require("kh2lib")
-    RequireKH2LibraryVersion(1)
-
-    CanExecute = kh2lib.CanExecute
-end
-
-function _OnFrame()
-    if not CanExecute then
-        return
-    end
-
-    -- (your code here)
-end
-```
-
-## Special Library Values
-
-The library provides several special values in the `kh2lib` table that can be used by scripts:
-
-- `kh2lib.CanExecute`
-  - whether the script should be allowed to execute based on detected game version and required library version
-- `kh2lib.GameVersion`
-  - the version of the game that was detected upon importing the library
-    - can be one of `KH2_VERSION_UNKNOWN`, `KH2_VERSION_EMULATOR`, `KH2_VERSION_EPIC`, `KH2_VERSION_STEAM_GLOBAL`, or
-      `KH2_VERSION_STEAM_JP`
-- `kh2lib.OnPC`
-  - whether the detected game version is one of the PC ports (effectively just a shortcut for checking that the game
-    version is one of the known PC ports)
-
-## Version-Specific Values
-
-The library provides (in the `kh2lib` table) many game version-specific memory addresses and other values.
-
-- See the individual files such as `KH2EpicGlobal.lua` to see which values are provided, along with some documentation
-  on each value where possible.
-
-## Library Functions
-
-The library provides some other common functions that can be used by scripts. These functions can be called directly
-(they're not part of the `kh2lib` table at this time).
-
-- `BitOr`
-  - Performs a bitwise `OR` of the value at a specified address using a specified mask and writes the updated byte.
-    This is usually used to set one or more bits in a byte to `1`.
-- `BitNot`
-  - Performs a bitwise `AND NOT` of the value at a specified address using a specified mask and writes the updated byte.
-    This is usually used to set one or more bits in a byte to `0`.
-- `ReadPointer`
-  - Reads and returns a pointer value at a specified address, using the proper size per platform.
-- `Log`
-  - Logs a message to the console, using an appropriate print call per platform.
+See [Developer Docs](./DeveloperDocs.md).
 
 ## Contributing
 

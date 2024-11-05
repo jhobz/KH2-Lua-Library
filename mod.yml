@@ -1,4 +1,4 @@
-title: KH2 Lua Library v1
+title: KH2 Lua Library (2.0.0-beta01)
 originalAuthor: aliosgaming/equations19
 description: Lua scripts designed to be included by other Lua-based KH2 mods.
 assets:
@@ -6,19 +6,31 @@ assets:
   method: copy
   source:
   - name: io_packages/kh2lib.lua
-- name: scripts/io_packages/KH2Emulator.lua
+- name: scripts/io_packages/kh2lib/Emulator.lua
   method: copy
   source:
-  - name: io_packages/KH2Emulator.lua
-- name: scripts/io_packages/KH2EpicGlobal.lua
+  - name: io_packages/kh2lib/Emulator.lua
+- name: scripts/io_packages/kh2lib/EpicGlobal-1_0_0_9.lua
   method: copy
   source:
-  - name: io_packages/KH2EpicGlobal.lua
-- name: scripts/io_packages/KH2SteamGlobal.lua
+  - name: io_packages/kh2lib/EpicGlobal-1_0_0_9.lua
+- name: scripts/io_packages/kh2lib/SteamGlobal-1_0_0_9.lua
   method: copy
   source:
-  - name: io_packages/KH2SteamGlobal.lua
-- name: scripts/io_packages/KH2SteamJP.lua
+  - name: io_packages/kh2lib/SteamGlobal-1_0_0_9.lua
+- name: scripts/io_packages/kh2lib/SteamJP-1_0_0_9.lua
   method: copy
   source:
-  - name: io_packages/KH2SteamJP.lua
+  - name: io_packages/kh2lib/SteamJP-1_0_0_9.lua
+- name: scripts/io_packages/kh2lib/EpicShared-1_0_0_10.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/EpicShared-1_0_0_10.lua
+- name: scripts/io_packages/kh2lib/SteamShared-1_0_0_10.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/SteamShared-1_0_0_10.lua
+- name: scripts/00-LuaLibrary.lua
+  method: copy
+  source:
+  - name: LuaLibrary.lua

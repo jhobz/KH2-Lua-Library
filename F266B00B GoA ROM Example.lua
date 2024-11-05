@@ -1,5 +1,5 @@
 --ROM Version
---Last Update: v1.0.0.9 Epic & Steam addresses
+--Last Update: Use addresses and functions from Lua Library as an example
 
 LUAGUI_NAME = 'GoA ROM Randomizer Build'
 LUAGUI_AUTH = 'SonicShadowSilver2 (Ported by Num)'
@@ -9,12 +9,23 @@ UseAlternatePartyModels = true
 ChangeFinalFightsMusic = true
 
 function _OnInit()
-    kh2lib = require("kh2lib")
-    RequireKH2LibraryVersion(1)
+    kh2libstatus, kh2lib = pcall(require, "kh2lib")
+    if not kh2libstatus then
+        print("ERROR (GoA): KH2-Lua-Library mod is not installed")
+        CanExecute = false
+        return
+    end
+
+    Log("GoA v1.54.2 (Lua Library Testing)")
+    RequireKH2LibraryVersion(2)
+
+    CanExecute = kh2lib.CanExecute
+    if not CanExecute then
+        return
+    end
 
     GoAOffset = 0x7C
     SeedCleared = false
-    CanExecute = kh2lib.CanExecute
     OnPC = kh2lib.OnPC
     StaticPointersLoaded = false
 
@@ -49,6 +60,7 @@ function _OnInit()
     Menu1    = kh2lib.Menu1
     NextMenu = kh2lib.NextMenu
     MSN = kh2lib.MSN
+    ShowAllItemsInShopsFunction = kh2lib.ShowAllItemsInShopsFunction
 
     -- Slot2  = Slot1 - NextSlot
     -- Slot3  = Slot2 - NextSlot
@@ -67,8 +79,6 @@ function _OnInit()
     -- Gauge3 = Gauge2 + NxtGauge
     Menu2  = Menu1 + NextMenu
     -- Menu3  = Menu2 + NextMenu
-
-    Log("GoA v1.54.1 (Lua Library Testing)")
 end
 
 function Warp(W,R,D,M,B,E) --Warp into the appropriate World, Room, Door, Map, Btl, Evt
@@ -740,17 +750,7 @@ if true then
 	end
 end
 --Show all items in shops (ASSEMBLY edit)
-if not OnPC then
-	WriteInt(0x264250,0)
-elseif ReadLong(0x2FAA22) == 0x43B70F0D74D68541 then --Epic Global
-	WriteByte(0x2FAA26,0)
-elseif ReadLong(0x2FA682) == 0x43B70F0D74D68541 then --Epic JP
-	WriteByte(0x2FA686,0)
-elseif ReadLong(0x2FB562) == 0x43B70F0D74D68541 then --Steam Global
-	WriteByte(0x2FB566,0)
-elseif ReadLong(0x2FB2E2) == 0x43B70F0D74D68541 then --Steam JP
-	WriteByte(0x2FB2E6,0)
-end
+ShowAllItemsInShopsFunction()
 --Alternate Party Models (adding new UCM using MEMT causes problems when shopping)
 if UseAlternatePartyModels then
     if World == 0x0C and Place ~= 0x070C then --Mage & Knight (KH I)
