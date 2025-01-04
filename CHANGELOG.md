@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 (beta)
+## 2.0.0
 
 - Adds support for updated game versions. New supported versions:
   - Epic Global 1.0.0.10

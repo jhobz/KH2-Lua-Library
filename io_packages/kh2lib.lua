@@ -6,7 +6,7 @@ KH2_LIBRARY_VERSION = 2
 
 -- This represents the "full" version including any potential hotfix-type changes that wouldn't need to increment the
 -- major version. It's meant for display purposes only to help with debugging/troubleshooting.
-KH2_LIBRARY_DISPLAY_VERSION = "2.0.0-beta01"
+KH2_LIBRARY_DISPLAY_VERSION = "2.0.0"
 
 -- Constants for each game version - scripts can check this using `GameVersion`
 KH2_VERSION_UNKNOWN = 0x0000
