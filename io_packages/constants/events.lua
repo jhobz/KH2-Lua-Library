@@ -335,11 +335,11 @@ local HOLLOW_BASTION = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x04, name = 'Pete Enters the Castle' },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x04, name = "Maleficent's Return" },
 
-  -- Manual entry, needs testing that event, battle, and map IDs match
+  -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x0014, battle_id = 0x0000, map_id = 0x0001, fight_id = 0x00, room_id = 0x01, world_id = 0x04, name = 'The Battle' },
-  -- Manual entry, needs testing that event, battle, and map IDs match
+  -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x0015, battle_id = 0x0000, map_id = 0x0001, fight_id = 0x00, room_id = 0x01, world_id = 0x04, name = 'A Message From Sephiroth' },
-  -- Manual entry, needs testing that event, battle, and map IDs match
+  -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x0016, battle_id = 0x0000, map_id = 0x0001, fight_id = 0x00, room_id = 0x01, world_id = 0x04, name = 'The One-Winged Angel' },
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x01, world_id = 0x04, name = "Xemnas's Agenda" },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x01, world_id = 0x04, name = 'Restoring the Town' },
@@ -351,10 +351,10 @@ local HOLLOW_BASTION = readonlytable{
   Event:new{ event_id = 0x0108, battle_id = 0x0108, map_id = 0x0108, fight_id = 0x00, room_id = 0x01, world_id = 0x04, name = 'The Battle (Theater Mode)' },
 
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x02, world_id = 0x04, name = 'The Leader of Organization XIII' },
-  -- Manual entry, needs testing that event, battle, and map IDs match
+  -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   -- The following comment was on the wiki: (Must Complete 12 Mushroom Missions to Make Mushroom XIII Appear!)
   Event:new{ event_id = 0x0000, battle_id = 0x0000, map_id = 0x0002, fight_id = 0x00, room_id = 0x02, world_id = 0x04, name = 'The Gathering of Mushrooms' },
-  -- Manual entry, needs testing that event, battle, and map IDs match
+  -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x02, world_id = 0x04, name = "Ansem's Protégé" },
   Event:new{ event_id = 0x004E, battle_id = 0x004E, map_id = 0x004E, fight_id = 0x00, room_id = 0x02, world_id = 0x04, name = 'The Showdown at Hollow Bastion' },
 
@@ -375,7 +375,7 @@ local HOLLOW_BASTION = readonlytable{
   Event:new{ event_id = 0x0006, battle_id = 0x0006, map_id = 0x0006, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = 'The True Meaning of the Scribbles' },
   Event:new{ event_id = 0x0008, battle_id = 0x0008, map_id = 0x0008, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = "Response From the Program's World" },
   Event:new{ event_id = 0x0009, battle_id = 0x0009, map_id = 0x0009, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = 'The Sealed Data' },
-  -- Manual entry, needs testing that event, battle, and map IDs match
+  -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x000E, battle_id = 0x0000, map_id = 0x000A, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = 'Before Space Paranoids (2nd Visit)' },
   Event:new{ event_id = 0x000C, battle_id = 0x000C, map_id = 0x000C, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = 'Aerith Watches Over the Study' },
   Event:new{ event_id = 0x000D, battle_id = 0x000D, map_id = 0x000D, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = "We're Waiting, Tron" },
@@ -388,7 +388,7 @@ local HOLLOW_BASTION = readonlytable{
   Event:new{ event_id = 0x0066, battle_id = 0x0066, map_id = 0x0066, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = "Meanwhile, in Ansem's Lab" },
   Event:new{ event_id = 0x0067, battle_id = 0x0067, map_id = 0x0067, fight_id = 0x00, room_id = 0x05, world_id = 0x04, name = 'Insurgence From the MCP' },
 
-  -- Manual entry, needs testing that event, battle, and map IDs match
+  -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x0012, battle_id = 0x0000, map_id = 0x0000, fight_id = 0x00, room_id = 0x06, world_id = 0x04, name = "Y-R-P's Treasure" },
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x06, world_id = 0x04, name = 'Looking For Leon' },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x06, world_id = 0x04, name = 'Sephiroth Descends' },
