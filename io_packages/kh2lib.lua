@@ -2,11 +2,11 @@
 -- In particular, this number should be incremented anytime new values are added to the library.
 -- Library maintainers must take care to not remove values that were in previous versions, for backwards compatibility.
 -- Scripts can declare a required version using `RequireKH2LibraryVersion(n)` where `n` is the expected minimum version.
-KH2_LIBRARY_VERSION = 2
+KH2_LIBRARY_VERSION = 2.1
 
 -- This represents the "full" version including any potential hotfix-type changes that wouldn't need to increment the
 -- major version. It's meant for display purposes only to help with debugging/troubleshooting.
-KH2_LIBRARY_DISPLAY_VERSION = "2.0.0"
+KH2_LIBRARY_DISPLAY_VERSION = '2.1.0'
 
 -- Constants for each game version - scripts can check this using `GameVersion`
 KH2_VERSION_UNKNOWN = 0x0000
@@ -25,7 +25,7 @@ function RequireKH2LibraryVersion(version)
     if KH2_LIBRARY_VERSION < version then
         local reqStr = tostring(version)
         local currStr = tostring(KH2_LIBRARY_VERSION)
-        LogError("KH2 Lua Library v" .. reqStr .. " is required and your version is " .. currStr .. ", please update")
+        LogError('KH2 Lua Library v' .. reqStr .. ' is required and your version is ' .. currStr .. ', please update')
         kh2lib.CanExecute = false
     end
 end
@@ -34,7 +34,7 @@ end
 -- If not on a PC port, `CanExecute` will be set to false and a message is printed to the console.
 function RequirePCGameVersion()
     if not kh2lib.OnPC then
-        LogError("This script expects to run on one of the PC ports of the game and will not execute.")
+        LogError('This script expects to run on one of the PC ports of the game and will not execute.')
         kh2lib.CanExecute = false
     end
 end
@@ -43,10 +43,10 @@ end
 -- script, perhaps due to not being able to find memory addresses for older game versions.
 -- If the detected version is one of those, `CanExecute` will be set to false and a message is printed to the console.
 function DenyGameVersions(...)
-    local arg = {...}
+    local arg = { ... }
     for _, version in pairs(arg) do
         if version == kh2lib.GameVersion then
-            LogError("This script has declared that it will not run properly on the currently detected game version.")
+            LogError('This script has declared that it will not run properly on the currently detected game version.')
             kh2lib.CanExecute = false
             return
         end
@@ -88,7 +88,7 @@ function LogWarning(message)
     if kh2lib.OnPC then
         ConsolePrint(message, 2)
     else
-        print("WARNING: " .. message)
+        print('WARNING: ' .. message)
     end
 end
 
@@ -97,7 +97,7 @@ function LogError(message)
     if kh2lib.OnPC then
         ConsolePrint(message, 3)
     else
-        print("ERROR: " .. message)
+        print('ERROR: ' .. message)
     end
 end
 
@@ -287,7 +287,8 @@ local function _AddInventoryAddresses(table)
     table.FrostGem = Save + 0x364E
     table.FrostCrystal = Save + 0x364F
     table.MegaRecipe = Save + 0x3650
-    table.StruggleSword = Save + 0x3651 -- Struggle weapons require the value at 032DECE to have the bitmask 0x80 OFF in order to show up in inventory
+    table.StruggleSword = Save +
+        0x3651 -- Struggle weapons require the value at 032DECE to have the bitmask 0x80 OFF in order to show up in inventory
     table.StarRecipe = Save + 0x3652
     table.RecoveryRecipe = Save + 0x3653
     table.SkillRecipe = Save + 0x3654
@@ -341,8 +342,10 @@ local function _AddInventoryAddresses(table)
     table.BondOfFlame = Save + 0x368D
     table.Fenrir = Save + 0x368E
     table.UltimaWeapon = Save + 0x368F
-    table.StruggleWand = Save + 0x3690 -- Struggle weapons require the value at 032DECE to have the bitmask 0x80 OFF in order to show up in inventory
-    table.StruggleHammer = Save + 0x3691 -- Struggle weapons require the value at 032DECE to have the bitmask 0x80 OFF in order to show up in inventory
+    table.StruggleWand = Save +
+        0x3690 -- Struggle weapons require the value at 032DECE to have the bitmask 0x80 OFF in order to show up in inventory
+    table.StruggleHammer = Save +
+        0x3691 -- Struggle weapons require the value at 032DECE to have the bitmask 0x80 OFF in order to show up in inventory
     table.SaveTheQueenPlus = Save + 0x3692
     table.SaveTheKingPlus = Save + 0x3693
     table.PromiseCharm = Save + 0x3694
@@ -383,48 +386,58 @@ local function _AddInventoryAddresses(table)
     table.AkashicRecordPlus = Save + 0x36B7
     -- Bitmask Inventory Items (Byte)
     -- Add the value of the items you want to add to inventory. ie: Having valor and wisdom form would be 0x6. Only wisdom form and baseball charm would be 0x12, etc ----
-    table.ItemSet1 = Save + 0x36C0 -- (1)Ukulele Charm, (2)Valor Form, (4)Wisdom Form, (8)Baseball Charm, (10)Final Form, (20)Anti Form, (40)Master Form, (80)Navigational Map
-    table.ItemSet2 = Save + 0x36C1 -- (1)Castle Map, (2)Basement Map, (4)Castle Walls Map, (20)The Interceptor Map, (40)Encampment Area Map, (80)Village Area Map
-    table.ItemSet3 = Save + 0x36C2 -- (1)Cornerstone Hill Map, (2)Windows of Time Map 2, (4)Lilliput Map, (8)Building Site Map, (10)Mickey's House Map, (20)Disney Castle Map, (40)Agrabah Map, (80)Cave of Wonders Map
-    table.ItemSet4 = Save + 0x36C3 -- (1)Ruins Map, (2)Undersea Kingdom Map, (4)Starry Hill Map, (8)100 Acre Wood Map, (10)Rabbit's Howse Map, (20)Piglet's Howse Map, (40)Kanga's Howse Map, (80)Spooky Cave Map
-    table.ItemSet5 = Save + 0x36C4 -- (1)Palace Map, (2)Coliseum Map, (4)Underworld Map, (8)Caverns Map, (10)Lamp Charm, (20)Feather Charm, (40)Report 1, (80)Report 2
-    table.ItemSet6 = Save + 0x36C5 -- (1)Report 3, (2)Report 4, (4)Report 5, (8)Report 6, (10)Report 7, (20)Report 8, (40)Report 9, (80)Report 10
+    table.ItemSet1 = Save +
+        0x36C0                     -- (1)Ukulele Charm, (2)Valor Form, (4)Wisdom Form, (8)Baseball Charm, (10)Final Form, (20)Anti Form, (40)Master Form, (80)Navigational Map
+    table.ItemSet2 = Save +
+        0x36C1                     -- (1)Castle Map, (2)Basement Map, (4)Castle Walls Map, (20)The Interceptor Map, (40)Encampment Area Map, (80)Village Area Map
+    table.ItemSet3 = Save +
+        0x36C2                     -- (1)Cornerstone Hill Map, (2)Windows of Time Map 2, (4)Lilliput Map, (8)Building Site Map, (10)Mickey's House Map, (20)Disney Castle Map, (40)Agrabah Map, (80)Cave of Wonders Map
+    table.ItemSet4 = Save +
+        0x36C3                     -- (1)Ruins Map, (2)Undersea Kingdom Map, (4)Starry Hill Map, (8)100 Acre Wood Map, (10)Rabbit's Howse Map, (20)Piglet's Howse Map, (40)Kanga's Howse Map, (80)Spooky Cave Map
+    table.ItemSet5 = Save +
+        0x36C4                     -- (1)Palace Map, (2)Coliseum Map, (4)Underworld Map, (8)Caverns Map, (10)Lamp Charm, (20)Feather Charm, (40)Report 1, (80)Report 2
+    table.ItemSet6 = Save +
+        0x36C5                     -- (1)Report 3, (2)Report 4, (4)Report 5, (8)Report 6, (10)Report 7, (20)Report 8, (40)Report 9, (80)Report 10
     table.ItemSet7 = Save + 0x36C6 -- (1)Report 11, (2)Report 12, (4)Report 13
-    table.ItemSet8 = Save + 0x36C7 -- (4)Halloween Town Map, (8)Naval Map, (10)Pride Rock Map, (20)Marketplace Map, (40)Pit Cell Area Map, (80)Twilight Town Map
-    table.ItemSet9 = Save + 0x36C8 -- (1)Dark City Map, (2)The Black Pearl Map, (4)Isla de Muerta Map, (8)Ship Graveyard Map, (10)Christmas Town Map, (20)Curly Hill Map, (40)Oasis Map, (80)Savannah Map
-    table.ItemSet10 = Save + 0x36C9 -- (1)Castle Perimeter Map, (2)The Great Maw Map, (4)I/O Tower Map, (8)Central Computer Core Map, (10)Solar Sailer Simulation Map, (20)Windows of Time Map, (40)Sunset Hill Map, (80)Mansion Map
-    table.ItemSet11 = Save + 0x36CA -- (1)Tower Map, (2)DH Map, (4)Castle that Never Was Map, (8)Limit Form, (10)Dark Remembrance Map, (20)Depths of Remembrance Map, (80)Garden of Assemblage Map
+    table.ItemSet8 = Save +
+        0x36C7                     -- (4)Halloween Town Map, (8)Naval Map, (10)Pride Rock Map, (20)Marketplace Map, (40)Pit Cell Area Map, (80)Twilight Town Map
+    table.ItemSet9 = Save +
+        0x36C8                     -- (1)Dark City Map, (2)The Black Pearl Map, (4)Isla de Muerta Map, (8)Ship Graveyard Map, (10)Christmas Town Map, (20)Curly Hill Map, (40)Oasis Map, (80)Savannah Map
+    table.ItemSet10 = Save +
+        0x36C9                     -- (1)Castle Perimeter Map, (2)The Great Maw Map, (4)I/O Tower Map, (8)Central Computer Core Map, (10)Solar Sailer Simulation Map, (20)Windows of Time Map, (40)Sunset Hill Map, (80)Mansion Map
+    table.ItemSet11 = Save +
+        0x36CA                     -- (1)Tower Map, (2)DH Map, (4)Castle that Never Was Map, (8)Limit Form, (10)Dark Remembrance Map, (20)Depths of Remembrance Map, (80)Garden of Assemblage Map
 end
 
 local function _InitLibrary()
-    if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == "ENGINE" then
-        kh2lib = require("kh2lib.Emulator")
+    if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == 'ENGINE' then
+        kh2lib = require('kh2lib.Emulator')
         kh2lib.GameVersion = KH2_VERSION_EMULATOR
         kh2lib.OnPC = false
         kh2lib.CanExecute = true
-    elseif GAME_ID == 0x431219CC and ENGINE_TYPE == "BACKEND" then -- PC
+    elseif GAME_ID == 0x431219CC and ENGINE_TYPE == 'BACKEND' then -- PC
         if ReadByte(0x566A8E) == 0xFF then
-            kh2lib = require("kh2lib.EpicGlobal-1_0_0_9")
+            kh2lib = require('kh2lib.EpicGlobal-1_0_0_9')
             kh2lib.GameVersion = KH2_VERSION_EPIC_1_0_0_9
             kh2lib.OnPC = true
             kh2lib.CanExecute = true
         elseif ReadByte(0x56668E) == 0xFF then
-            kh2lib = require("kh2lib.SteamGlobal-1_0_0_9")
+            kh2lib = require('kh2lib.SteamGlobal-1_0_0_9')
             kh2lib.GameVersion = KH2_VERSION_STEAM_GLOBAL_1_0_0_9
             kh2lib.OnPC = true
             kh2lib.CanExecute = true
         elseif ReadByte(0x56640E) == 0xFF then
-            kh2lib = require("kh2lib.SteamJP-1_0_0_9")
+            kh2lib = require('kh2lib.SteamJP-1_0_0_9')
             kh2lib.GameVersion = KH2_VERSION_STEAM_JP_1_0_0_9
             kh2lib.OnPC = true
             kh2lib.CanExecute = true
         elseif ReadByte(0x660E44) == 106 then
-            kh2lib = require("kh2lib.EpicShared-1_0_0_10")
+            kh2lib = require('kh2lib.EpicShared-1_0_0_10')
             kh2lib.GameVersion = KH2_VERSION_EPIC_1_0_0_10
             kh2lib.OnPC = true
             kh2lib.CanExecute = true
         elseif ReadByte(0x660EF4) == 106 then
-            kh2lib = require("kh2lib.SteamShared-1_0_0_10")
+            kh2lib = require('kh2lib.SteamShared-1_0_0_10')
             kh2lib.GameVersion = KH2_VERSION_STEAM_1_0_0_10
             kh2lib.OnPC = true
             kh2lib.CanExecute = true
@@ -432,18 +445,23 @@ local function _InitLibrary()
             kh2lib.GameVersion = KH2_VERSION_UNKNOWN
             kh2lib.OnPC = true
             kh2lib.CanExecute = false
-            LogError(baseVersionMessage .. "KH2 PC detected, but is a version not currently supported")
+            LogError(baseVersionMessage .. 'KH2 PC detected, but is a version not currently supported')
         end
     else
         kh2lib.GameVersion = KH2_VERSION_UNKNOWN
         kh2lib.OnPC = false
         kh2lib.CanExecute = false
-        LogError(baseVersionMessage .. "KH2 not detected")
+        LogError(baseVersionMessage .. 'KH2 not detected')
     end
 
     if kh2lib.CanExecute then
         _AddInventoryAddresses(kh2lib)
+
+        -- Helper constants
+        kh2lib.offsets = require('constants.offsets')
+        kh2lib.worlds = require('constants.worlds')
     end
+
 
     return kh2lib
 end
