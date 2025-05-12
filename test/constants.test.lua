@@ -17,11 +17,16 @@ function _OnInit()
         return
     end
 
-    Now = kh2lib.Now
-    local worlds = kh2lib.worlds
-    for key, world in pairs(worlds) do
-        Log(key .. ' ' .. world.id .. ' ' .. world.name)
-    end
+    -- Now = kh2lib.Now
+    -- local worlds = kh2lib.worlds
+    Log('kh2lib.worlds[0x12]: ' .. kh2lib.worlds[0x12])
+    Log('kh2lib.worlds.TWTNW: ' .. kh2lib.worlds.TWTNW)
+    Log('kh2lib.rooms.AG[1]: ' .. kh2lib.rooms.AG[1])
+    Log("kh2lib.rooms.AG['Bazaar']: " .. kh2lib.rooms.AG['Bazaar'])
+    Log('kh2lib.events.AG[4][1]: ' .. kh2lib.events.AG[4][1])
+    -- for key, world in pairs(worlds) do
+    --     Log(key .. ' ' .. world.id .. ' ' .. world.name)
+    -- end
 end
 
 function _OnFrame()

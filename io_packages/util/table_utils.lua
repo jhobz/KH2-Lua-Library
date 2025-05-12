@@ -13,7 +13,7 @@ function utils.readonlytable(table)
       -- have to override pairs to follow the proxy table
       __pairs = function (t)
          return next, table
-      end
+      end,
    })
 end
 

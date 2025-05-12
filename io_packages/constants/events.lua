@@ -26,11 +26,14 @@ function Event:new(o)
   return o
 end
 
+-- @module events
+local events = {}
+
 -- ////////
 -- Auto-generated KH2FM event data tables (with some manual entries)
 -- ////////
 
-local WORLD_OF_DARKNESS = readonlytable{
+events.WORLD_OF_DARKNESS = readonlytable{
   Event:new{ event_id = 0x0033, battle_id = 0x0033, map_id = 0x0033, fight_id = 0x00, room_id = 0x00, world_id = 0x01, name = 'The Letter' },
   Event:new{ event_id = 0x0039, battle_id = 0x0039, map_id = 0x0039, fight_id = 0x00, room_id = 0x00, world_id = 0x01, name = 'The Dark Margin' },
   Event:new{ event_id = 0x003A, battle_id = 0x003A, map_id = 0x003A, fight_id = 0x00, room_id = 0x00, world_id = 0x01, name = 'FMV Ending & Credits' },
@@ -44,8 +47,7 @@ local WORLD_OF_DARKNESS = readonlytable{
 
   Event:new{ event_id = 0x0038, battle_id = 0x0038, map_id = 0x0038, fight_id = 0x00, room_id = 0x01, world_id = 0x01, name = 'Menu Trailer' },
 }
-
-local TWILIGHT_TOWN = readonlytable{
+events.TWILIGHT_TOWN = readonlytable{
   Event:new{ event_id = 0x0033, battle_id = 0x0033, map_id = 0x0033, fight_id = 0x00, room_id = 0x00, world_id = 0x02, name = 'Her Name is Naminé' },
 
   Event:new{ event_id = 0x0034, battle_id = 0x0034, map_id = 0x0034, fight_id = 0x00, room_id = 0x01, world_id = 0x02, name = 'Dreams Connected' },
@@ -322,16 +324,14 @@ local TWILIGHT_TOWN = readonlytable{
 
   Event:new{ event_id = 0x00BA, battle_id = 0x00BA, map_id = 0x00BA, fight_id = 0x00, room_id = 0x29, world_id = 0x02, name = 'Nobody Waves Battle (With Mickey)' },
 }
-
-local DESTINY_ISLANDS = readonlytable{
+events.DESTINY_ISLANDS = readonlytable{
   Event:new{ event_id = 0x0033, battle_id = 0x0033, map_id = 0x0033, fight_id = 0x00, room_id = 0x01, world_id = 0x03, name = 'Kairi and Selphie' },
   Event:new{ event_id = 0x0034, battle_id = 0x0034, map_id = 0x0034, fight_id = 0x00, room_id = 0x01, world_id = 0x03, name = 'Kairi Running' },
 
   Event:new{ event_id = 0x0035, battle_id = 0x0035, map_id = 0x0035, fight_id = 0x00, room_id = 0x02, world_id = 0x03, name = 'The Letter to the Boy' },
   Event:new{ event_id = 0x0036, battle_id = 0x0036, map_id = 0x0036, fight_id = 0x00, room_id = 0x02, world_id = 0x03, name = 'Axel Approaches Kairi' },
 }
-
-local HOLLOW_BASTION = readonlytable{
+events.HOLLOW_BASTION = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x04, name = 'Pete Enters the Castle' },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x04, name = "Maleficent's Return" },
 
@@ -520,8 +520,7 @@ local HOLLOW_BASTION = readonlytable{
   Event:new{ event_id = 0x0091, battle_id = 0x0091, map_id = 0x0091, fight_id = 0x00, room_id = 0x26, world_id = 0x04, name = 'Marluxia Battle (Absent Silhouette)' },
   Event:new{ event_id = 0x0096, battle_id = 0x0096, map_id = 0x0096, fight_id = 0x00, room_id = 0x26, world_id = 0x04, name = 'Marluxia Battle (Data)' },
 }
-
-local BEASTS_CASTLE = readonlytable{
+events.BEASTS_CASTLE = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x05, name = 'The Voice That Echoes' },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x05, name = 'Find Belle' },
   Event:new{ event_id = 0x0003, battle_id = 0x0003, map_id = 0x0003, fight_id = 0x00, room_id = 0x00, world_id = 0x05, name = 'Damsel in Distress' },
@@ -587,8 +586,7 @@ local BEASTS_CASTLE = readonlytable{
   Event:new{ event_id = 0x0063, battle_id = 0x0063, map_id = 0x0063, fight_id = 0x00, room_id = 0x0F, world_id = 0x05, name = 'Data Xaldin Disappears' },
   Event:new{ event_id = 0x007F, battle_id = 0x007F, map_id = 0x007F, fight_id = 0x00, room_id = 0x0F, world_id = 0x05, name = "Xaldin's Demise" },
 }
-
-local OLYMPUS_COLISEUM = readonlytable{
+events.OLYMPUS_COLISEUM = readonlytable{
   -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x0016, battle_id = 0x0002, map_id = 0x0000, fight_id = 0x00, room_id = 0x00, world_id = 0x06, name = "Phil's Training" },
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x06, name = 'Hercules the Hero' },
@@ -693,8 +691,7 @@ local OLYMPUS_COLISEUM = readonlytable{
   Event:new{ event_id = 0x00C9, battle_id = 0x00C9, map_id = 0x00C9, fight_id = 0x00, room_id = 0x13, world_id = 0x06, name = 'Hades Battle (Part I)' },
   Event:new{ event_id = 0x00CA, battle_id = 0x00CA, map_id = 0x00CA, fight_id = 0x00, room_id = 0x13, world_id = 0x06, name = 'Hades Battle (Part II)' },
 }
-
-local AGRABAH = readonlytable{
+events.AGRABAH = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x07, name = "Iago's Melancholy" },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x07, name = 'Lamp-thief?' },
   Event:new{ event_id = 0x0003, battle_id = 0x0003, map_id = 0x0003, fight_id = 0x00, room_id = 0x00, world_id = 0x07, name = 'Aladdin and Abu' },
@@ -765,8 +762,7 @@ local AGRABAH = readonlytable{
   Event:new{ event_id = 0x0085, battle_id = 0x0085, map_id = 0x0085, fight_id = 0x00, room_id = 0x0F, world_id = 0x07, name = 'Suspicious Shopkeeper' },
   Event:new{ event_id = 0x0087, battle_id = 0x0087, map_id = 0x0087, fight_id = 0x00, room_id = 0x0F, world_id = 0x07, name = 'To the Desert Ruins' },
 }
-
-local THE_LAND_OF_DRAGONS = readonlytable{
+events.THE_LAND_OF_DRAGONS = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x08, name = "Shan Yu's Ambition" },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x08, name = 'Mushu, an Old Pal' },
 
@@ -836,8 +832,7 @@ local THE_LAND_OF_DRAGONS = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x0C, world_id = 0x08, name = 'Annihilated Army' },
   Event:new{ event_id = 0x000A, battle_id = 0x000A, map_id = 0x000A, fight_id = 0x00, room_id = 0x0C, world_id = 0x08, name = 'The Village With No-One In It' },
 }
-
-local HUNDRED_ACRE_WOOD = readonlytable{
+events.HUNDRED_ACRE_WOOD = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x09, name = 'The 100 Acre Wood' },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x09, name = 'To the Forest Once More' },
   Event:new{ event_id = 0x0003, battle_id = 0x0003, map_id = 0x0003, fight_id = 0x00, room_id = 0x00, world_id = 0x09, name = "Piglet's House" },
@@ -888,8 +883,7 @@ local HUNDRED_ACRE_WOOD = readonlytable{
   Event:new{ event_id = 0x003D, battle_id = 0x003D, map_id = 0x003D, fight_id = 0x00, room_id = 0x09, world_id = 0x09, name = 'The Expotition (With Time Limit)' },
   Event:new{ event_id = 0x0048, battle_id = 0x0048, map_id = 0x0048, fight_id = 0x00, room_id = 0x09, world_id = 0x09, name = 'The Expotition (Without Time Limit)' },
 }
-
-local PRIDE_LANDS = readonlytable{
+events.PRIDE_LANDS = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x0A, name = "Rafiki's Verdict" },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x0A, name = 'His Majesty, Scar' },
   Event:new{ event_id = 0x0003, battle_id = 0x0003, map_id = 0x0003, fight_id = 0x00, room_id = 0x00, world_id = 0x0A, name = "The Wind's Tidings" },
@@ -947,8 +941,7 @@ local PRIDE_LANDS = readonlytable{
 
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x10, world_id = 0x0A, name = 'The Tragedy' },
 }
-
-local ATLANTICA = readonlytable{
+events.ATLANTICA = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x0B, name = 'Blowing Off the Anxiety' },
 
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x01, world_id = 0x0B, name = "The Prince's Bronze Statue" },
@@ -1005,8 +998,7 @@ local ATLANTICA = readonlytable{
   Event:new{ event_id = 0x0061, battle_id = 0x0061, map_id = 0x0061, fight_id = 0x00, room_id = 0x09, world_id = 0x0B, name = "Song 4: Ursula's Revenge (Theater Mode)" },
   Event:new{ event_id = 0x0062, battle_id = 0x0062, map_id = 0x0062, fight_id = 0x00, room_id = 0x09, world_id = 0x0B, name = 'Ursula Disappeared Into the Sea' },
 }
-
-local DISNEY_CASTLE = readonlytable{
+events.DISNEY_CASTLE = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x0C, name = 'There Are Heartless Here Too?' },
   Event:new{ event_id = 0x0033, battle_id = 0x0033, map_id = 0x0033, fight_id = 0x00, room_id = 0x00, world_id = 0x0C, name = 'Guide Minnie to the Throne' },
   Event:new{ event_id = 0x0051, battle_id = 0x0051, map_id = 0x0051, fight_id = 0x00, room_id = 0x00, world_id = 0x0C, name = 'The Hidden Entrance' },
@@ -1038,8 +1030,7 @@ local DISNEY_CASTLE = readonlytable{
   Event:new{ event_id = 0x0047, battle_id = 0x0047, map_id = 0x0047, fight_id = 0x00, room_id = 0x07, world_id = 0x0C, name = 'Victory on the Wastelands' },
   Event:new{ event_id = 0x0049, battle_id = 0x0049, map_id = 0x0049, fight_id = 0x00, room_id = 0x07, world_id = 0x0C, name = 'Lingering Will Battle (Rematch)' },
 }
-
-local TIMELESS_RIVER = readonlytable{
+events.TIMELESS_RIVER = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x0D, name = 'The World of Black and White' },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x0D, name = 'The Appearing Window' },
   Event:new{ event_id = 0x0003, battle_id = 0x0003, map_id = 0x0003, fight_id = 0x00, room_id = 0x00, world_id = 0x0D, name = 'Deepening Mystery' },
@@ -1083,8 +1074,7 @@ local TIMELESS_RIVER = readonlytable{
   Event:new{ event_id = 0x0003, battle_id = 0x0003, map_id = 0x0003, fight_id = 0x00, room_id = 0x08, world_id = 0x0D, name = 'Time Window: Door to the Past' },
   Event:new{ event_id = 0x0004, battle_id = 0x0004, map_id = 0x0004, fight_id = 0x00, room_id = 0x08, world_id = 0x0D, name = 'Time Window: The Culprit Appears' },
 }
-
-local HALLOWEEN_TOWN = readonlytable{
+events.HALLOWEEN_TOWN = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x0E, name = 'Merry Christmas' },
   Event:new{ event_id = 0x0002, battle_id = 0x0002, map_id = 0x0002, fight_id = 0x00, room_id = 0x00, world_id = 0x0E, name = "The Mayor's Decree" },
   Event:new{ event_id = 0x0003, battle_id = 0x0003, map_id = 0x0003, fight_id = 0x00, room_id = 0x00, world_id = 0x0E, name = 'Advance Departure!' },
@@ -1145,8 +1135,7 @@ local HALLOWEEN_TOWN = readonlytable{
   Event:new{ event_id = 0x003F, battle_id = 0x003F, map_id = 0x003F, fight_id = 0x00, room_id = 0x0A, world_id = 0x0E, name = 'Gift Wrapping (Wrap 100 Presents)' },
   Event:new{ event_id = 0x0048, battle_id = 0x0048, map_id = 0x0048, fight_id = 0x00, room_id = 0x0A, world_id = 0x0E, name = 'Gift Wrapping (Wrap Over 150 Presents)' },
 }
-
-local PORT_ROYAL = readonlytable{
+events.PORT_ROYAL = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x10, name = 'The View From High Ground' },
   Event:new{ event_id = 0x000A, battle_id = 0x000A, map_id = 0x000A, fight_id = 0x00, room_id = 0x00, world_id = 0x10, name = 'Port Royal Once More' },
 
@@ -1227,8 +1216,7 @@ local PORT_ROYAL = readonlytable{
 
   Event:new{ event_id = 0x0053, battle_id = 0x0053, map_id = 0x0053, fight_id = 0x00, room_id = 0x19, world_id = 0x10, name = 'The Plan to Rescue Elizabeth' },
 }
-
-local SPACE_PARANOIDS = readonlytable{
+events.SPACE_PARANOIDS = readonlytable{
   Event:new{ event_id = 0x0001, battle_id = 0x0001, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x11, name = 'Security Program, Tron' },
   -- TODO: Manual entry, needs testing that event, battle, and map IDs match
   Event:new{ event_id = 0x0002, battle_id = 0x0000, map_id = 0x0001, fight_id = 0x00, room_id = 0x00, world_id = 0x11, name = "The MCP's Aim" },
@@ -1282,8 +1270,7 @@ local SPACE_PARANOIDS = readonlytable{
 
   Event:new{ event_id = 0x000A, battle_id = 0x000A, map_id = 0x000A, fight_id = 0x00, room_id = 0x0A, world_id = 0x11, name = "The Solar Sailer's Departure" },
 }
-
-local THE_WORLD_THAT_NEVER_WAS = readonlytable{
+events.THE_WORLD_THAT_NEVER_WAS = readonlytable{
   Event:new{ event_id = 0x0033, battle_id = 0x0033, map_id = 0x0033, fight_id = 0x00, room_id = 0x00, world_id = 0x12, name = 'Number 13: Roxas' },
   Event:new{ event_id = 0x0073, battle_id = 0x0073, map_id = 0x0073, fight_id = 0x00, room_id = 0x00, world_id = 0x12, name = 'Taking Care of the Rat' },
   Event:new{ event_id = 0x0074, battle_id = 0x0074, map_id = 0x0074, fight_id = 0x00, room_id = 0x00, world_id = 0x12, name = "The Keyblade's Hero" },
@@ -1491,3 +1478,5 @@ local THE_WORLD_THAT_NEVER_WAS = readonlytable{
 }
 
 -- TODO: Addendum: The Underdrome Coliseum Cups
+
+return events

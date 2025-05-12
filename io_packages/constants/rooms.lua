@@ -337,34 +337,4 @@ rooms.THE_WORLD_THAT_NEVER_WAS = readonlytable{
   Room:new{ id = 0x1D, world_id = 0x12, name = 'Altar of Naught (No Kingdom Hearts Moon)' },
 }
 
--- Short names and aliases
-rooms.WOD = rooms.WORLD_OF_DARKNESS
-rooms.TT = rooms.TWILIGHT_TOWN
-rooms.STT = rooms.TWILIGHT_TOWN
-rooms.DI = rooms.DESTINY_ISLANDS
-rooms.HB = rooms.HOLLOW_BASTION
-rooms.RADIANT_GARDEN = rooms.HOLLOW_BASTION
-rooms.RG = rooms.RADIANT_GARDEN
-rooms.BC = rooms.BEASTS_CASTLE
-rooms.OC = rooms.OLYMPUS_COLISEUM
-rooms.AG = rooms.AGRABAH
-rooms.TLOD = rooms.THE_LAND_OF_DRAGONS
-rooms.LAND_OF_DRAGONS = rooms.THE_LAND_OF_DRAGONS
-rooms.LOD = rooms.LAND_OF_DRAGONS
-rooms.HAW = rooms.HUNDRED_ACRE_WOOD
-rooms['100_ACRE_WOOD'] = rooms.HUNDRED_ACRE_WOOD
-rooms['1AW'] = rooms['100_ACRE_WOOD']
-rooms.PL = rooms.PRIDE_LANDS
-rooms.AT = rooms.ATLANTICA
-rooms.ATL = rooms.ATLANTICA
-rooms.DC = rooms.DISNEY_CASTLE
-rooms.TR = rooms.TIMELESS_RIVER
-rooms.HT = rooms.HALLOWEEN_TOWN
-rooms.PR = rooms.PORT_ROYAL
-rooms.SP = rooms.SPACE_PARANOIDS
-rooms.TWTNW = rooms.THE_WORLD_THAT_NEVER_WAS
-rooms.WORLD_THAT_NEVER_WAS = rooms.THE_WORLD_THAT_NEVER_WAS
-rooms.WTNW = rooms.WORLD_THAT_NEVER_WAS
-
-
 return rooms

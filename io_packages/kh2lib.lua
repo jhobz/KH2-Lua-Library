@@ -409,6 +409,18 @@ local function _AddInventoryAddresses(table)
         0x36CA                     -- (1)Tower Map, (2)DH Map, (4)Castle that Never Was Map, (8)Limit Form, (10)Dark Remembrance Map, (20)Depths of Remembrance Map, (80)Garden of Assemblage Map
 end
 
+local function _add_lookup_tables(table)
+    local status, luts = pcall(require, 'kh2lib.lookup_tables')
+    if not status then
+        LogError('Failed to create LUTs for kh2lib constants')
+    else
+        table.offsets = luts.offsets
+        table.worlds = luts.worlds
+        table.rooms = luts.rooms
+        table.events = luts.events
+    end
+end
+
 local function _InitLibrary()
     if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == 'ENGINE' then
         kh2lib = require('kh2lib.Emulator')
@@ -454,12 +466,10 @@ local function _InitLibrary()
         LogError(baseVersionMessage .. 'KH2 not detected')
     end
 
+    -- Add convenience variables and methods
     if kh2lib.CanExecute then
         _AddInventoryAddresses(kh2lib)
-
-        -- Helper constants
-        kh2lib.offsets = require('constants.offsets')
-        kh2lib.worlds = require('constants.worlds')
+        _add_lookup_tables(kh2lib)
     end
 
 
