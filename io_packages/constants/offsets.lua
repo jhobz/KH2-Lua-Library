@@ -4,8 +4,67 @@ local readonlytable = table_utils.readonlytable
 -- @module offsets
 local offsets = {}
 
+offsets.save = {
+    AREA_DATA = 0x10,
+}
+
+--[[Not included in list below (needs more info)
+    Save+0x1CF1 STT Dodge Roll, Unknown Disk, Twilight Thorn
+--]]
+-- Unused bytes repurposed by mods
+offsets.save.custom = {
+    spawns = {
+        TT_SPAWN_ID_1 = 0x01A0,
+        TT_SPAWN_ID_2 = 0x022F,
+        STT_SPAWN_ID_1 = 0x0230,
+        STT_SPAWN_ID_2 = 0x02BF,
+        MERLINS_HOUSE_SPAWN_ID_1 = 0x0664,
+        MERLINS_HOUSE_SPAWN_ID_2 = 0x0669,
+        BOROUGH_SPAWN_ID_1 = 0x066A,
+        BOROUGH_SPAWN_ID_2 = 0x066F,
+    },
+    post_story_saves = {
+        TT = 0x1CFD,
+        STT = 0x1CFE,
+        HB = 0x1D2E,
+        BC = 0x1D3E,
+        OC = 0x1D6E,
+        AG = 0x1D7E,
+        LOD = 0x1D9E,
+        PL = 0x1DDE,
+        DC = 0x1E1E,
+        HT = 0x1E5E,
+        PR = 0x1E9E,
+        SP = 0x1EBE,
+        TWTNW = 0x1EDE,
+    },
+    progress = {
+        TT = 0x1D0D,
+        STT = 0x1D0E,
+        HB = 0x1D2F,
+        BC = 0x1D3F,
+        OC = 0x1D6F,
+        AG = 0x1D7F,
+        LOD = 0x1D9F,
+        PL = 0x1DDF,
+        DC = 0x1E1F,
+        HT = 0x1E5F,
+        -- PR missing???
+        SP = 0x1EBF,
+        TWTNW = 0x1EDF,
+    },
+    GENIE_CRASH_FIX = 0x06B2,
+    ROYAL_SUMMONS = 0x1CF7,
+    STT_STRUGGLE_WEAPON = 0x1CF8,
+    STT_KEYBLADE_1 = 0x1CF9,
+    STT_KEYBLADE_2 = 0x1CFA,
+    STT_TT_FLAG = 0x1CFF,
+    MUNNY_POUCH_OLETTE = 0x35C4,
+    MUNNY_POUCH_MICKEY = 0x35C5,
+}
+
 -- Inventory offsets from kh2lib.Save
-offsets.save = readonlytable{
+offsets.save.inventory = readonlytable{
     POTION = 0x3580,
     HI_POTION = 0x3581,
     ETHER = 0x3582,
@@ -302,7 +361,7 @@ offsets.now = readonlytable{
     WORLD = 0x00,          -- Byte
     ROOM = 0x01,           -- Byte
     PLACE = 0x00,          -- Short (to get world & room in one)
-    DOOR = 0x02,           -- Short
+    DOOR = 0x02,           -- Short (also used for OC cups fights)
     MAP = 0x04,            -- Short
     BATTLE = 0x06,         -- Short
     BTL = 0x06,            -- alias for BATTLE

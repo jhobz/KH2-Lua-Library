@@ -24,6 +24,14 @@ function _OnInit()
     Log('kh2lib.rooms.AG[1]: ' .. kh2lib.rooms.AG[1])
     Log("kh2lib.rooms.AG['Bazaar']: " .. kh2lib.rooms.AG['Bazaar'])
     Log('kh2lib.events.AG[4][1]: ' .. kh2lib.events.AG[4][1])
+    Log(string.format('kh2lib.current.world: 0x%x', kh2lib.current.world))
+    Log('kh2lib.current.world_name: ' .. kh2lib.current.world_name)
+    Log(string.format('kh2lib.current.room: 0x%x', kh2lib.current.room))
+    Log('kh2lib.current.room_name: ' .. kh2lib.current.room_name)
+    Log(string.format('kh2lib.current.door: 0x%x', kh2lib.current.door))
+    Log(string.format('kh2lib.current.place: 0x%x', kh2lib.current.place))
+    Log('kh2lib.current.place_name: ' .. kh2lib.current.place_name)
+    Log('kh2lib.current.location: ' .. kh2lib.current.location)
     -- for key, world in pairs(worlds) do
     --     Log(key .. ' ' .. world.id .. ' ' .. world.name)
     -- end
@@ -35,4 +43,5 @@ function _OnFrame()
     end
 
     -- (your code here)
+    Log('kh2lib.current.location: ' .. kh2lib.current.location)
 end
