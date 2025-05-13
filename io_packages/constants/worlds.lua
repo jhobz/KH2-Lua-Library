@@ -34,6 +34,7 @@ local worlds = readonlytable{
     World:new{ id = 0x0C, name = 'Disney Castle', short_name = 'DC' },
     World:new{ id = 0x0D, name = 'Timeless River', short_name = 'TR' },
     World:new{ id = 0x0E, name = 'Halloween Town', short_name = 'HT' },
+    World:new{ id = 0x0F, name = 'World Map', short_name = 'MAP' },
     World:new{ id = 0x10, name = 'Port Royal', short_name = 'PR' },
     World:new{ id = 0x11, name = 'Space Paranoids', short_name = 'SP' },
     World:new{ id = 0x12, name = 'The World That Never Was', short_name = 'TWTNW' },
