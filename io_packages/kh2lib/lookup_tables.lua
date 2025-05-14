@@ -4,14 +4,18 @@ local worlds = require('constants.worlds')
 local rooms = require('constants.rooms')
 local events = require('constants.events')
 
--- Create lookup table for worlds (ID <--> Name)
+--- @alias WorldId integer
+--- @alias WorldName string
+--- @alias RoomId integer
+
+--- Lookup table for worlds (ID <--> Name)
+--- @type {[WorldId]: WorldName}|{[WorldName]: WorldId}
 local lut_worlds = {}
 for _, world in ipairs(worlds) do
     local id = world.id
     local name = world.name
     local short_name = world.short_name
     local key_name = name:gsub(' ', '_'):upper()
-    -- key_name = key_name:upper()
 
     lut_worlds[id] = name
     lut_worlds[key_name] = id
@@ -32,6 +36,7 @@ lut_worlds.WORLD_THAT_NEVER_WAS = lut_worlds.THE_WORLD_THAT_NEVER_WAS
 lut_worlds.WTNW = lut_worlds.WORLD_THAT_NEVER_WAS
 
 -- Create lookup table for rooms (ID <--> Name)
+--- @type {[WorldId|WorldName]: {[RoomId]: string}}|{[WorldId|WorldName]: {[string]: RoomId}}
 local lut_rooms = {}
 for world_name, rooms_array in pairs(rooms) do
     lut_rooms[world_name] = {}
@@ -83,12 +88,13 @@ lut_rooms.WTNW = lut_rooms.WORLD_THAT_NEVER_WAS
 
 -- Create lookup table for events (ID -> Name)
 -- Bidirectional search can be added later if deemed useful
+--- @type {[WorldId|WorldName]: {[RoomId]: {[integer]: string}}}
 local lut_events = {}
 for world_name, events_array in pairs(events) do
     lut_events[world_name] = {}
 
     for _, event in ipairs(events_array) do
-        local id = event.event_id
+        local id = event.id
         local room = event.room_id
         local world_id = event.world_id
         local name = event.name
@@ -138,4 +144,10 @@ return {
     worlds = lut_worlds,
     rooms = lut_rooms,
     events = lut_events,
+    constants = {
+        offsets = offsets,
+        worlds = worlds,
+        rooms = rooms,
+        events = events,
+    },
 }
