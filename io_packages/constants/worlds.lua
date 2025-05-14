@@ -1,25 +1,26 @@
-local table_utils = require('util.table_utils')
-local readonlytable = table_utils.readonlytable
+local KH2ValueConstant = require('constants.base_class')
 
--- World class containing ID value and human-readable name
-local World = { id = -1, name = 'UNKNOWN_WORLD', short_name = 'UNKNWN' }
+--- KH2 World
+--- @class World:KH2ValueConstant
+--- @field id integer # 1-byte world ID (from game)
+--- @field name string # human-readable name of world
+--- @field short_name string # abbreviated name of world
+-- local World = {}
+local World = KH2ValueConstant:new{ id = -1, name = 'UNKNOWN_WORLD', short_name = 'UNKWN' }
+-- setmetatable(World, getmetatable(KH2ValueConstant))
 
-function World:tostring()
-    return self.name
-end
-
+--- @param o {id: integer, name: string, short_name: string} # options table
+--- @return World # newly instantiated World
 function World:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.__name = 'World'
-    self.__tostring = self.tostring
-    self.__concat = function (a, b) return a .. b:tostring() end
+    local mt = World:super_mt()
+    mt.__name = 'World'
+    setmetatable(o, mt)
     return o
 end
 
--- @module worlds
-local worlds = readonlytable{
+--- References to all of the worlds defined by the game
+--- @type World[]
+local worlds = {
     World:new{ id = 0x01, name = 'World of Darkness', short_name = 'WOD' },
     World:new{ id = 0x02, name = 'Twilight Town', short_name = 'TT' },
     World:new{ id = 0x03, name = 'Destiny Islands', short_name = 'DI' },

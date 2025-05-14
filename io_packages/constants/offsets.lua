@@ -1,17 +1,19 @@
-local table_utils = require('util.table_utils')
-local readonlytable = table_utils.readonlytable
-
--- @module offsets
+--- Useful offsets for reading bytes from common memory addresses
 local offsets = {}
 
+--- Commonly-used offsets to kh2lib.Save
+--- @enum (key) SaveOffset
 offsets.save = {
     AREA_DATA = 0x10,
+    custom = {},
+    inventory = {},
 }
 
---[[Not included in list below (needs more info)
+--[[TODO: Needs more info to add to list
     Save+0x1CF1 STT Dodge Roll, Unknown Disk, Twilight Thorn
 --]]
--- Unused bytes repurposed by mods
+--- Unused bytes repurposed by mods
+--- @enum (key) CustomOffset
 offsets.save.custom = {
     spawns = {
         TT_SPAWN_ID_1 = 0x01A0,
@@ -63,8 +65,10 @@ offsets.save.custom = {
     MUNNY_POUCH_MICKEY = 0x35C5,
 }
 
--- Inventory offsets from kh2lib.Save
-offsets.save.inventory = readonlytable{
+-- TODO: Sort these
+--- Inventory offsets from kh2lib.Save
+--- @enum (key) InventoryItem
+offsets.save.inventory = {
     POTION = 0x3580,
     HI_POTION = 0x3581,
     ETHER = 0x3582,
@@ -356,8 +360,9 @@ offsets.save.inventory = readonlytable{
     ITEM_SET11 = 0x36CA, -- (1)Tower Map, (2)DH Map, (4)Castle that Never Was Map, (8)Limit Form, (10)Dark Remembrance Map, (20)Depths of Remembrance Map, (80)Garden of Assemblage Map
 }
 
--- Offsets from kh2lib.Now to get IDs of current location/battle/event
-offsets.now = readonlytable{
+--- Offsets from kh2lib.Now to get IDs of current location/battle/event
+--- @enum (key) NowOffset
+offsets.now = {
     WORLD = 0x00,          -- Byte
     ROOM = 0x01,           -- Byte
     PLACE = 0x00,          -- Short (to get world & room in one)

@@ -19,10 +19,14 @@ function _OnInit()
 
     -- Now = kh2lib.Now
     -- local worlds = kh2lib.worlds
+    print(kh2lib.constants.worlds[1])
+    Log('kh2lib.constants.worlds[0]: ' .. kh2lib.constants.worlds[1] .. 'string')
     Log('kh2lib.worlds[0x12]: ' .. kh2lib.worlds[0x12])
     Log('kh2lib.worlds.TWTNW: ' .. kh2lib.worlds.TWTNW)
     Log('kh2lib.rooms.AG[1]: ' .. kh2lib.rooms.AG[1])
+    Log('kh2lib.rooms.AG[3]: ' .. kh2lib.rooms.AG[3])
     Log("kh2lib.rooms.AG['Bazaar']: " .. kh2lib.rooms.AG['Bazaar'])
+    Log('kh2lib.constants.events.OLYMPUS_COLISEUM[4]: ' .. kh2lib.constants.events.OLYMPUS_COLISEUM[4])
     Log('kh2lib.events.AG[4][1]: ' .. kh2lib.events.AG[4][1])
     Log(string.format('kh2lib.current.world: 0x%x', kh2lib.current.world))
     Log('kh2lib.current.world_name: ' .. kh2lib.current.world_name)
@@ -43,5 +47,5 @@ function _OnFrame()
     end
 
     -- (your code here)
-    Log('kh2lib.current.location: ' .. kh2lib.current.location)
+    -- Log('kh2lib.current.location: ' .. kh2lib.current.location)
 end

@@ -102,6 +102,7 @@ function LogError(message)
     end
 end
 
+--- @deprecated
 local function _legacy_add_inventory_addresses()
     local Save = kh2lib.Save
 
@@ -410,6 +411,8 @@ local function _legacy_add_inventory_addresses()
         0x36CA                      -- (1)Tower Map, (2)DH Map, (4)Castle that Never Was Map, (8)Limit Form, (10)Dark Remembrance Map, (20)Depths of Remembrance Map, (80)Garden of Assemblage Map
 end
 
+--- Create lookup tables for converting constants from IDs to
+--- names (and vice-versa) and attach them to the kh2lib table
 local function add_lookup_tables()
     local status, luts = pcall(require, 'kh2lib.lookup_tables')
     if not status then
@@ -417,16 +420,34 @@ local function add_lookup_tables()
         return
     end
 
+    kh2lib.constants = luts.constants
     kh2lib.offsets = luts.offsets
     kh2lib.worlds = luts.worlds
     kh2lib.rooms = luts.rooms
     kh2lib.events = luts.events
 end
 
+--- Attach a table `current` to the kh2lib table which provides
+--- shortcuts to values at relevant game state memory addresses
 local function add_game_state_table()
+    --- Shortcut to get current values at common game state addresses
+    --- @class GameState
+    --- @field world integer # current world ID
+    --- @field world_name string # current world name
+    --- @field room integer # current room ID
+    --- @field room_name string # current room name
+    --- @field door integer # current door ID
+    --- @field place integer # concatenation of room ID and world ID in hex
+    --- @field place_name string # current world & room names, separated by hyphen
+    --- @field location string # alias for place_name
     local game_state = {}
-    game_state.mt = {
-        -- define getters as syntactical sugar for some props
+
+    --- @type metatable
+    local mt = {
+        --- Defines getters as syntactical sugar for member variables
+        --- @param self GameState
+        --- @param key 'world'|'world_name'|'room'|'room_name'|'door'|'place'|'place_name'|'location'
+        --- @return integer|string|nil
         __index = function (self, key)
             local BASE_ADDRESS = kh2lib.Now
             local offsets = kh2lib.offsets
@@ -455,7 +476,7 @@ local function add_game_state_table()
             return nil
         end,
     }
-    setmetatable(game_state, game_state.mt)
+    setmetatable(game_state, mt)
     kh2lib.current = game_state
 end
 
