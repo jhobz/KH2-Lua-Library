@@ -50,8 +50,6 @@ return {
     -- LoadingIndicator = ?,
     -- CurrentOpenMenu = ?,
     -- WriteLogic = ?,
-    -- HBBGM = ?,
-    -- ARDEvent = ?,
     -- GummiSkip = ?,
     ShowAllItemsInShopsFunction = _ShowAllItemsInShops,
 }

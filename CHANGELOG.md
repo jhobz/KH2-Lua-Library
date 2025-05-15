@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0 (dev)
+
+- Removes addresses that had no known usages (and were not yet found in newer game versions)
+
 ## 2.0.0
 
 - Adds support for updated game versions. New supported versions:

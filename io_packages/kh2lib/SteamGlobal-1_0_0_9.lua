@@ -50,8 +50,6 @@ return {
     LoadingIndicator = 0x8EC540,
     CurrentOpenMenu = 0x7435D0,
     WriteLogic = 0x7134A0,
-    HBBGM = 0x2A6993C,
-    ARDEvent = 0x29C571E,
     GummiSkip = 0x9AD827,
     ShowAllItemsInShopsFunction = _ShowAllItemsInShops,
 }

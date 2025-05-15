@@ -54,9 +54,6 @@ return {
     LoadingIndicator = 0x8EC050,
     CurrentOpenMenu = 0x743350,
     WriteLogic = 0x713438,
-    -- TODO: Fill in values for these once they're found again
-    -- HBBGM = ?,
-    -- ARDEvent = ?,
     GummiSkip = 0x9AD327,
     ShowAllItemsInShopsFunction = _ShowAllItemsInShops,
 }

@@ -2,11 +2,11 @@
 -- In particular, this number should be incremented anytime new values are added to the library.
 -- Library maintainers must take care to not remove values that were in previous versions, for backwards compatibility.
 -- Scripts can declare a required version using `RequireKH2LibraryVersion(n)` where `n` is the expected minimum version.
-KH2_LIBRARY_VERSION = 2
+KH2_LIBRARY_VERSION = 3
 
 -- This represents the "full" version including any potential hotfix-type changes that wouldn't need to increment the
 -- major version. It's meant for display purposes only to help with debugging/troubleshooting.
-KH2_LIBRARY_DISPLAY_VERSION = "2.0.0"
+KH2_LIBRARY_DISPLAY_VERSION = "3.0.0"
 
 -- Constants for each game version - scripts can check this using `GameVersion`
 KH2_VERSION_UNKNOWN = 0x0000
@@ -432,13 +432,13 @@ local function _InitLibrary()
             kh2lib.GameVersion = KH2_VERSION_UNKNOWN
             kh2lib.OnPC = true
             kh2lib.CanExecute = false
-            LogError(baseVersionMessage .. "KH2 PC detected, but is a version not currently supported")
+            LogError("KH2 Lua Library - KH2 PC detected, but is a version not currently supported")
         end
     else
         kh2lib.GameVersion = KH2_VERSION_UNKNOWN
         kh2lib.OnPC = false
         kh2lib.CanExecute = false
-        LogError(baseVersionMessage .. "KH2 not detected")
+        LogError("KH2 Lua Library - KH2 not detected")
     end
 
     if kh2lib.CanExecute then

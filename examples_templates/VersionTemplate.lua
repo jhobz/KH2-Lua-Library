@@ -146,14 +146,14 @@ return {
 
     WriteLogic = 0x0000000,
 
-    HBBGM = 0x0000000,
-
-    ARDEvent = 0x0000000,
-
     -- Lua Library Version 2 ----------------------------------------------------------------
+
     GummiSkip = 0x0000000,
 
     -- Show all items in shops (ASSEMBLY edit)
     -- (This is actually a function reference since various versions need to do different things)
     ShowAllItemsInShopsFunction = _ShowAllItemsInShops,
+
+    -- Lua Library Version 3 ----------------------------------------------------------------
+
 }
