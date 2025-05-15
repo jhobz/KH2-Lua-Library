@@ -1,4 +1,4 @@
-title: KH2 Lua Library (2.1.0)
+title: KH2 Lua Library (3.0.0)
 originalAuthor: aliosgaming/equations19
 description: Lua scripts designed to be included by other Lua-based KH2 mods.
 assets:
@@ -30,18 +30,34 @@ assets:
   method: copy
   source:
   - name: io_packages/kh2lib/SteamShared-1_0_0_10.lua
-- name: scripts/io_packages/util/table_utils.lua
+- name: scripts/io_packages/kh2lib/lookup_tables.lua
   method: copy
   source:
-  - name: io_packages/util/table_utils.lua
+  - name: io_packages/kh2lib/lookup_tables.lua
 - name: scripts/io_packages/constants/offsets.lua
   method: copy
   source:
   - name: io_packages/constants/offsets.lua
+- name: scripts/io_packages/constants/base_class.lua
+  method: copy
+  source:
+  - name: io_packages/constants/base_class.lua
 - name: scripts/io_packages/constants/worlds.lua
   method: copy
   source:
   - name: io_packages/constants/worlds.lua
+- name: scripts/io_packages/constants/rooms.lua
+  method: copy
+  source:
+  - name: io_packages/constants/rooms.lua
+- name: scripts/io_packages/constants/events.lua
+  method: copy
+  source:
+  - name: io_packages/constants/events.lua
+- name: scripts/io_packages/constants/inventory.lua
+  method: copy
+  source:
+  - name: io_packages/constants/inventory.lua
 - name: scripts/00-LuaLibrary.lua
   method: copy
   source:

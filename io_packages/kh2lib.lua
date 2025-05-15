@@ -2,11 +2,11 @@
 -- In particular, this number should be incremented anytime new values are added to the library.
 -- Library maintainers must take care to not remove values that were in previous versions, for backwards compatibility.
 -- Scripts can declare a required version using `RequireKH2LibraryVersion(n)` where `n` is the expected minimum version.
-KH2_LIBRARY_VERSION = 2.1
+KH2_LIBRARY_VERSION = 3
 
 -- This represents the "full" version including any potential hotfix-type changes that wouldn't need to increment the
 -- major version. It's meant for display purposes only to help with debugging/troubleshooting.
-KH2_LIBRARY_DISPLAY_VERSION = '2.1.0'
+KH2_LIBRARY_DISPLAY_VERSION = '3.0.0'
 
 -- Constants for each game version - scripts can check this using `GameVersion`
 KH2_VERSION_UNKNOWN = 0x0000
@@ -455,6 +455,11 @@ local function add_game_state_table()
             local rooms = kh2lib.rooms
             local world_id = ReadByte(BASE_ADDRESS + offsets.now.WORLD)
             local room_id = ReadByte(BASE_ADDRESS + offsets.now.ROOM)
+
+            -- Game is still in bootup sequence
+            -- TODO: Probably handle this differently in the future so that
+            -- title screen can actually be detected
+            if world_id == 255 or room_id == 255 then return nil end
 
             -- read current area value from game before returning
             if key == 'world' then
