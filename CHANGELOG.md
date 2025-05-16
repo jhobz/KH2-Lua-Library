@@ -3,6 +3,8 @@
 ## 3.0.0 (dev)
 
 - Removes addresses that had no known usages (and were not yet found in newer game versions)
+- Adds several convenience APIs that can be used in place of lower level calls
+- Internal code organization updates
 
 ## 2.0.0
 

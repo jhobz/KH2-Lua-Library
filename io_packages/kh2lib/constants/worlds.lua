@@ -1,4 +1,4 @@
-local KH2ValueConstant = require('constants.base_class')
+local KH2ValueConstant = require('kh2lib.constants.base_class')
 
 --- KH2 World
 --- @class World:KH2ValueConstant

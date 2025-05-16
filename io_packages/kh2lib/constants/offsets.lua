@@ -51,7 +51,7 @@ offsets.save.custom = {
         PL = 0x1DDF,
         DC = 0x1E1F,
         HT = 0x1E5F,
-        -- PR missing???
+        PR = 0x1E9F,
         SP = 0x1EBF,
         TWTNW = 0x1EDF,
     },
@@ -345,8 +345,10 @@ offsets.save.inventory = {
     EXECUTIVES_RING = 0x36B5,
     SHAMANS_RELIC_PLUS = 0x36B6,
     AKASHIC_RECORD_PLUS = 0x36B7,
+
     -- Bitmask Inventory Items (Byte)
     -- Add the value of the items you want to add to inventory. ie: Having valor and wisdom form would be 0x6. Only wisdom form and baseball charm would be 0x12, etc ----
+
     ITEM_SET1 = 0x36C0,  -- (1)Ukulele Charm, (2)Valor Form, (4)Wisdom Form, (8)Baseball Charm, (10)Final Form, (20)Anti Form, (40)Master Form, (80)Navigational Map
     ITEM_SET2 = 0x36C1,  -- (1)Castle Map, (2)Basement Map, (4)Castle Walls Map, (20)The Interceptor Map, (40)Encampment Area Map, (80)Village Area Map
     ITEM_SET3 = 0x36C2,  -- (1)Cornerstone Hill Map, (2)Windows of Time Map 2, (4)Lilliput Map, (8)Building Site Map, (10)Mickey's House Map, (20)Disney Castle Map, (40)Agrabah Map, (80)Cave of Wonders Map

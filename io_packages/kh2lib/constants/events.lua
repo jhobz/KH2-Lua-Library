@@ -1,4 +1,4 @@
-local KH2ValueConstant = require('constants.base_class')
+local KH2ValueConstant = require('kh2lib.constants.base_class')
 
 --- Event class containing ID values and human-readable name
 --- @class Event:KH2ValueConstant

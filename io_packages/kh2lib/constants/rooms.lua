@@ -1,4 +1,4 @@
-local KH2ValueConstant = require('constants.base_class')
+local KH2ValueConstant = require('kh2lib.constants.base_class')
 
 --- Room class containing ID value and human-readable name
 --- @class Room: KH2ValueConstant

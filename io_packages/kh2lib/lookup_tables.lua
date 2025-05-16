@@ -1,8 +1,8 @@
 -- Constants
-local offsets = require('constants.offsets')
-local worlds = require('constants.worlds')
-local rooms = require('constants.rooms')
-local events = require('constants.events')
+local offsets = require('kh2lib.constants.offsets')
+local worlds = require('kh2lib.constants.worlds')
+local rooms = require('kh2lib.constants.rooms')
+local events = require('kh2lib.constants.events')
 
 --- @alias WorldId integer
 --- @alias WorldName string

@@ -2,63 +2,66 @@ title: KH2 Lua Library (3.0.0)
 originalAuthor: aliosgaming/equations19
 description: Lua scripts designed to be included by other Lua-based KH2 mods.
 assets:
+# Main library script
 - name: scripts/io_packages/kh2lib.lua
   method: copy
   source:
   - name: io_packages/kh2lib.lua
-- name: scripts/io_packages/kh2lib/Emulator.lua
-  method: copy
-  source:
-  - name: io_packages/kh2lib/Emulator.lua
-- name: scripts/io_packages/kh2lib/EpicGlobal-1_0_0_9.lua
-  method: copy
-  source:
-  - name: io_packages/kh2lib/EpicGlobal-1_0_0_9.lua
-- name: scripts/io_packages/kh2lib/SteamGlobal-1_0_0_9.lua
-  method: copy
-  source:
-  - name: io_packages/kh2lib/SteamGlobal-1_0_0_9.lua
-- name: scripts/io_packages/kh2lib/SteamJP-1_0_0_9.lua
-  method: copy
-  source:
-  - name: io_packages/kh2lib/SteamJP-1_0_0_9.lua
-- name: scripts/io_packages/kh2lib/EpicShared-1_0_0_10.lua
-  method: copy
-  source:
-  - name: io_packages/kh2lib/EpicShared-1_0_0_10.lua
-- name: scripts/io_packages/kh2lib/SteamShared-1_0_0_10.lua
-  method: copy
-  source:
-  - name: io_packages/kh2lib/SteamShared-1_0_0_10.lua
-- name: scripts/io_packages/kh2lib/lookup_tables.lua
-  method: copy
-  source:
-  - name: io_packages/kh2lib/lookup_tables.lua
-- name: scripts/io_packages/constants/offsets.lua
-  method: copy
-  source:
-  - name: io_packages/constants/offsets.lua
-- name: scripts/io_packages/constants/base_class.lua
-  method: copy
-  source:
-  - name: io_packages/constants/base_class.lua
-- name: scripts/io_packages/constants/worlds.lua
-  method: copy
-  source:
-  - name: io_packages/constants/worlds.lua
-- name: scripts/io_packages/constants/rooms.lua
-  method: copy
-  source:
-  - name: io_packages/constants/rooms.lua
-- name: scripts/io_packages/constants/events.lua
-  method: copy
-  source:
-  - name: io_packages/constants/events.lua
-- name: scripts/io_packages/constants/inventory.lua
-  method: copy
-  source:
-  - name: io_packages/constants/inventory.lua
+
+# Helper script that verifies the library is working correctly
 - name: scripts/00-LuaLibrary.lua
   method: copy
   source:
   - name: LuaLibrary.lua
+
+# Memory addresses for each supported game version
+- name: scripts/io_packages/kh2lib/addresses/Emulator.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/addresses/Emulator.lua
+- name: scripts/io_packages/kh2lib/addresses/EpicGlobal-1_0_0_9.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/addresses/EpicGlobal-1_0_0_9.lua
+- name: scripts/io_packages/kh2lib/addresses/SteamGlobal-1_0_0_9.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/addresses/SteamGlobal-1_0_0_9.lua
+- name: scripts/io_packages/kh2lib/addresses/SteamJP-1_0_0_9.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/addresses/SteamJP-1_0_0_9.lua
+- name: scripts/io_packages/kh2lib/addresses/EpicShared-1_0_0_10.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/addresses/EpicShared-1_0_0_10.lua
+- name: scripts/io_packages/kh2lib/addresses/SteamShared-1_0_0_10.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/addresses/SteamShared-1_0_0_10.lua
+
+# Additional helper modules
+- name: scripts/io_packages/kh2lib/lookup_tables.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/lookup_tables.lua
+- name: scripts/io_packages/kh2lib/constants/offsets.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/constants/offsets.lua
+- name: scripts/io_packages/kh2lib/constants/base_class.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/constants/base_class.lua
+- name: scripts/io_packages/kh2lib/constants/worlds.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/constants/worlds.lua
+- name: scripts/io_packages/kh2lib/constants/rooms.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/constants/rooms.lua
+- name: scripts/io_packages/kh2lib/constants/events.lua
+  method: copy
+  source:
+  - name: io_packages/kh2lib/constants/events.lua
