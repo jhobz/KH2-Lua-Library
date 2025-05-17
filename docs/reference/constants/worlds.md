@@ -22,6 +22,9 @@ Creates a new World object.
 
 The table below contains all of the worlds indexed as World objects in [`worlds.lua`][worlds_code].
 
+IDs are listed in [hexadecimal format][1], but can be represented as simple integers as well
+(e.g. `0x11 == 17`).
+
 | ID   | Name                     | Short name |
 | ---- | ------------------------ | ---------- |
 | 0x01 | World of Darkness        | WOD        |
@@ -47,3 +50,4 @@ The table below contains all of the worlds indexed as World objects in [`worlds.
 [constants]: /docs/reference/constants/README.md
 [worlds_code]: /io_packages/kh2lib/constants/worlds.lua
 [kh2valueconstant]: /docs/reference/constants/kh2valueconstant.lua
+[1]: https://en.wikipedia.org/wiki/Hexadecimal#:~:text=Hexadecimal%20\(also%20known,ten%20to%20fifteen.&text=In%20programming%2C%20several%20notations%20denote%20hexadecimal%20numbers%2C%20usually%20involving%20a%20prefix.%20The%20prefix%200x%20is%20used%20in%20C%2C%20which%20would%20denote%20this%20value%20as%200x2C7.
