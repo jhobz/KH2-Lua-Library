@@ -1,6 +1,6 @@
-# World
+# Class: `World`
 
-Extends: [`KH2ValueConstant`][kh2valueconstant]
+- Extends [`KH2ValueConstant`][kh2valueconstant]
 
 This library defines a World class used to create a static list of all worlds and their relevant data.
 It's unlikely that you will ever need to interface with this class directly.
@@ -14,6 +14,7 @@ unless you have a special use-case not covered by the lookup tables or convenien
   - `id` {integer} One-byte world ID (from game). Default: `-1`
   - `name` {string} Human-readable name of world. Default: `'UNKNOWN_WORLD'`
   - `short_name` {string} Abbreviated name of world. Default: `'UNKWN'`
+- Returns: {World} newly-instantiated World
 
 Creates a new World object.
 
