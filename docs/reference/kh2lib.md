@@ -1,9 +1,30 @@
-# API Reference
+# KH2 Lua Library (KH2Lib) <!-- omit in toc -->
 
 This is a technical reference sheet for the various tables, variables,
 and methods exposed by the `kh2lib` library.
 For guides on how to perform certain actions, check out [How-to guides][guides].
 For in-depth tutorials on building a KH2 lua mod, see [Tutorials][tutorials].
+
+## Table of contents <!-- omit in toc -->
+
+- [Library and game versions](#library-and-game-versions)
+  - [`kh2lib.CanExecute`](#kh2libcanexecute)
+  - [`kh2lib.GameVersion`](#kh2libgameversion)
+  - [`kh2lib.OnPC`](#kh2libonpc)
+  - [`RequireKH2LibraryVersion(version)`](#requirekh2libraryversionversion)
+  - [`RequirePCGameVersion()`](#requirepcgameversion)
+  - [`DenyGameVersions(version1[, version2, ...])`](#denygameversionsversion1-version2-)
+- [Memory addresses](#memory-addresses)
+- [Functions](#functions)
+  - [`BitOr(address, mask)`](#bitoraddress-mask)
+  - [`BitNot()`](#bitnot)
+  - [`ReadPointer(address)`](#readpointeraddress)
+  - [`Log(message)`, `LogWarning(message)`, `LogError(message)`](#logmessage-logwarningmessage-logerrormessage)
+- [Lookup tables](#lookup-tables)
+  - [`kh2lib.worlds`](#kh2libworlds)
+  - [`kh2lib.rooms`](#kh2librooms)
+- [Common memory value shortcuts](#common-memory-value-shortcuts)
+  - [`kh2lib.current`](#kh2libcurrent)
 
 ## Library and game versions
 
@@ -66,7 +87,7 @@ This is most commonly caused by not being able to find memory addresses for olde
 If the detected version matches one of the provided arguments,
 `kh2lib.CanExecute` is set to false and a message is printed to the console.
 
-#### Examples
+#### Examples <!-- omit in toc -->
 
 ```lua
 -- Deny emulator version and first Steam global version
@@ -144,7 +165,7 @@ Some common world abbreviations are also provided as aliases.
 For example, to get the world ID for Hollow Bastion,
 you can use either `kh2lib.worlds.HB` or `kh2lib.worlds.HOLLOW_BASTION`.
 
-#### Examples
+#### Examples <!-- omit in toc -->
 
 ```lua
 print(kh2lib.worlds[0x04])           -- Hollow Bastion
@@ -166,7 +187,7 @@ and the second index refers to the room.
 Values are accessed by integer properties (IDs) or strings (uppercase world names).
 The first index has the same keys as `kh2lib.worlds`.
 
-#### Examples
+#### Examples <!-- omit in toc -->
 
 ```lua
 print(kh2lib.rooms[0x04][0x06])               -- Postern
@@ -201,7 +222,7 @@ to get information about the current game state.
 Currently, this only includes information accessed via the `kh2lib.Now` memory address,
 but more information is planned to be added in the future.
 
-#### Examples
+#### Examples <!-- omit in toc -->
 
 ```lua
 -- Assume the player is currently in the Secret Passage in Beast's Castle
