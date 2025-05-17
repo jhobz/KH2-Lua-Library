@@ -9,7 +9,7 @@ local KH2ValueConstant = require('kh2lib.constants.base_class')
 --- @field battle_id? integer # 2-byte battle ID (from game)
 --- @field map_id? integer # 2-byte map ID (from game)
 --- @field door_id? integer # 2-byte door ID (from game)
-local Event = KH2ValueConstant:new()
+local Event = KH2ValueConstant:new{ id = -1, room_id = -1, world_id = -1, name = 'UNKNOWN_EVENT' }
 
 --- @param o { id: integer, room_id: integer, world_id: integer, name: string, battle_id?: integer, map_id?: integer, door_id?: integer } # options table
 --- @return Event # newly instantiated Event
