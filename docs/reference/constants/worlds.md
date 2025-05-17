@@ -16,7 +16,13 @@ unless you have a special use-case not covered by the lookup tables or convenien
   - `short_name` {string} Abbreviated name of world. Default: `'UNKWN'`
 - Returns: {World} newly-instantiated World
 
-Creates a new World object.
+A subclass of {KH2ValueConstant} defining a World object.
+
+All instances contain the built-in `KH2ValueConstant` properties and:
+
+- `id` {integer} The game's ID for this world. Number between 0 and 255 (`0x00` to `0xFF`).
+- `name` {string} The English name of the world.
+- `short_name` {string} The English acronym or abbreviated name for the world.
 
 ## List of all worlds
 
@@ -49,5 +55,5 @@ IDs are listed in [hexadecimal format][1], but can be represented as simple inte
 <!-- Reference links -->
 [constants]: /docs/reference/constants/README.md
 [worlds_code]: /io_packages/kh2lib/constants/worlds.lua
-[kh2valueconstant]: /docs/reference/constants/kh2valueconstant.lua
+[kh2valueconstant]: /docs/reference/constants/kh2valueconstant.md
 [1]: https://en.wikipedia.org/wiki/Hexadecimal#:~:text=Hexadecimal%20\(also%20known,ten%20to%20fifteen.&text=In%20programming%2C%20several%20notations%20denote%20hexadecimal%20numbers%2C%20usually%20involving%20a%20prefix.%20The%20prefix%200x%20is%20used%20in%20C%2C%20which%20would%20denote%20this%20value%20as%200x2C7.

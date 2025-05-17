@@ -11,7 +11,7 @@ unless you have a special use-case not covered by the lookup tables or convenien
 ## `new Event([options])` <!-- omit in toc -->
 
 - `options` {table}
-  - `id` {integer} One-byte event ID (from game). Default: `-1`
+  - `id` {integer} Two-byte event ID (from game). Default: `-1`
   - `room_id` {integer} One-byte room ID (from game). Default: `-1`
   - `world_id` {integer} One-byte world ID (from game). Default: `-1`
   - `name` {string} Human-readable name of world. Default: `'UNKNOWN_EVENT'`
@@ -20,8 +20,27 @@ unless you have a special use-case not covered by the lookup tables or convenien
   - `door_id` {integer} Two-byte door ID (usually optional).
 - Returns: {Event} newly-instantiated Event
 
-Creates a new Event object. Event IDs are **not unique between worlds or rooms**, which is why the
+A subclass of {KH2ValueConstant} defining an Event object.
+**Event IDs are not unique across worlds _nor_ rooms**, which is why the
 world ID and room ID are also stored for each event and are required in the lookup table.
+
+All instances contain the built-in `KH2ValueConstant` properties and:
+
+- `id` {integer} The game's ID for this event. Number between 0 and 65535 (`0x0000` to `0xFFFF`).
+- `room_id` {integer} The game's ID for the room containing this event.
+Number between 0 and 255 (`0x00` to `0xFF`).
+- `world_id` {integer} The game's ID for the world containing this event's room.
+Number between 0 and 255 (`0x00` to `0xFF`).
+- `name` {string} The English name of the event.
+
+The following properties are only required for some events (default to `nil` when unused):
+
+- `battle_id` {integer} The game's "battle ID" for this event, which dictates enemy spawns.
+Number between 0 and 65535 (`0x0000` to `0xFFFF`).
+- `map_id` {integer} The game's "map ID" for this event, which dictates changes within a room.
+Number between 0 and 65535 (`0x0000` to `0xFFFF`).
+- `door_id` {integer} The game's "door ID" for this event, which dictates the player's spawn location.
+Number between 0 and 65535 (`0x0000` to `0xFFFF`).
 
 ## List of all events <!-- omit in toc -->
 
@@ -67,6 +86,6 @@ WIP
 <!-- Reference links -->
 [constants]: /docs/reference/constants/README.md
 [events_code]: /io_packages/kh2lib/constants/events.lua
-[kh2valueconstant]: /docs/reference/constants/kh2valueconstant.lua
+[kh2valueconstant]: /docs/reference/constants/kh2valueconstant.md
 [contribute]: /CONTRIBUTING.md
 [1]: https://en.wikipedia.org/wiki/Hexadecimal#:~:text=Hexadecimal%20\(also%20known,ten%20to%20fifteen.&text=In%20programming%2C%20several%20notations%20denote%20hexadecimal%20numbers%2C%20usually%20involving%20a%20prefix.%20The%20prefix%200x%20is%20used%20in%20C%2C%20which%20would%20denote%20this%20value%20as%200x2C7.
