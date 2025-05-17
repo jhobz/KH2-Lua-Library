@@ -5,9 +5,7 @@ local KH2ValueConstant = require('kh2lib.constants.base_class')
 --- @field id integer # 1-byte world ID (from game)
 --- @field name string # human-readable name of world
 --- @field short_name string # abbreviated name of world
--- local World = {}
 local World = KH2ValueConstant:new{ id = -1, name = 'UNKNOWN_WORLD', short_name = 'UNKWN' }
--- setmetatable(World, getmetatable(KH2ValueConstant))
 
 --- @param o {id: integer, name: string, short_name: string} # options table
 --- @return World # newly instantiated World
