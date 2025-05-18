@@ -1,4 +1,5 @@
-local KH2ValueConstant = require('kh2lib.constants.base_class')
+local BASE_PATH = (...):match('(.-)[^%.]+$')
+local KH2ValueConstant = require(BASE_PATH .. 'base_class')
 
 --- Room class containing ID value and human-readable name
 --- @class Room: KH2ValueConstant

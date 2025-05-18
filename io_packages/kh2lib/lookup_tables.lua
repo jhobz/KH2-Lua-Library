@@ -1,8 +1,9 @@
 -- Constants
-local offsets = require('kh2lib.constants.offsets')
-local worlds = require('kh2lib.constants.worlds')
-local rooms = require('kh2lib.constants.rooms')
-local events = require('kh2lib.constants.events')
+local BASE_PATH = (...):match('(.-)[^%.]+$')
+local offsets = require(BASE_PATH .. 'constants.offsets')
+local worlds = require(BASE_PATH .. 'constants.worlds')
+local rooms = require(BASE_PATH .. 'constants.rooms')
+local events = require(BASE_PATH .. 'constants.events')
 
 --- @alias WorldId integer
 --- @alias WorldName string
@@ -15,7 +16,7 @@ for _, world in ipairs(worlds) do
     local id = world.id
     local name = world.name
     local short_name = world.short_name
-    local key_name = name:gsub(' ', '_'):upper()
+    local key_name = name:gsub(' ', '_'):gsub("'", ''):upper()
 
     lut_worlds[id] = name
     lut_worlds[key_name] = id
