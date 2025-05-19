@@ -1,9 +1,9 @@
 # KH2 Lua Library (KH2Lib) <!-- omit in toc -->
 
-This is a technical reference sheet for the various tables, variables,
+This is a technical reference sheet for the myriad tables, variables,
 and methods exposed by the `kh2lib` library.
-For guides on how to perform certain actions, check out [How-to guides][guides].
-For in-depth tutorials on building a KH2 lua mod, see [Tutorials][tutorials].
+For guides on how to perform certain actions, check out [How-to guides][guide-folder].
+For in-depth tutorials on building a KH2 lua mod, see [Tutorials][tut-folder].
 
 ## Table of contents <!-- omit in toc -->
 
@@ -23,7 +23,8 @@ For in-depth tutorials on building a KH2 lua mod, see [Tutorials][tutorials].
 - [Lookup tables](#lookup-tables)
   - [`kh2lib.worlds`](#kh2libworlds)
   - [`kh2lib.rooms`](#kh2librooms)
-- [Common memory value shortcuts](#common-memory-value-shortcuts)
+  - [`kh2lib.events`](#kh2libevents)
+- [Game state](#game-state)
   - [`kh2lib.current`](#kh2libcurrent)
 
 ## Library and game versions
@@ -99,7 +100,7 @@ DenyGameVersions(KH2_VERSION_EMULATOR, KH2_VERSION_STEAM_GLOBAL_1_0_0_9)
 The library provides access to many memory addresses and other values,
 adjusted for the current game version.
 A few of the most common are listed below, as an example.
-For a full list of exposed addresses, see [Addresses][addresses].
+For a full list of exposed addresses, see [Addresses][ref-addresses].
 
 - `kh2lib.Now` {integer} Current location data
 - `kh2lib.Sve` {integer} Saved location
@@ -108,7 +109,7 @@ For a full list of exposed addresses, see [Addresses][addresses].
 - `kh2lib.Sys3Pointer` {integer} Pointer address for `03system.bin`
 - `kh2lib.Btl0Pointer` {integer} Pointer address for `00battle.bin`
 
-[Full addresses reference][addresses]
+[Full addresses reference][ref-addresses]
 
 ## Functions
 
@@ -152,18 +153,27 @@ The `LogWarning` and `LogError` variants print the message in a corresponding co
 > there may be incorrect or incomplete values within the lists of constants.
 
 The library includes a list of constants, their corresponding game IDs, and their memory addresses.
-The full list of available constants can be found at [Constants][constants].
+The full list of available constants can be found at [Constants][ref-constants].
 Below is a reference of provided lookup tables for converting between IDs and human-readable strings.
 
 ### `kh2lib.worlds`
 
-- `[world]` {integer|string} World ID or world name (SNAKE_CASE)
+- {table} worlds table
+  - `key` {integer|string} ID, name, or short name of world
+  - `value` {string|integer} Name or ID of world represented by `key`
 
-Lookup table to convert world IDs to their English names or vice-versa.
-Values are accessed by integer properties (IDs) or strings (uppercase, snake_case world names).
-Some common world abbreviations are also provided as aliases.
-For example, to get the world ID for Hollow Bastion,
-you can use either `kh2lib.worlds.HB` or `kh2lib.worlds.HOLLOW_BASTION`.
+Converts between integer world IDs and English names (in both directions).
+This table (and all other lookup tables indexed by world) contains an index for every world's ID,
+English name (in upper SNAKE_CASE), and short name (in upper SNAKE_CASE),
+as defined in the [full list of world objects][ref-worlds].
+Additionally, some aliases for common alternate names and abbreviations are provided:
+
+- `SIMULATED_TWILIGHT_TOWN`, `STT` :arrow_right: `TWILIGHT_TOWN`
+- `RADIANT_GARDEN`, `RG` :arrow_right: `HOLLOW_BASTION`
+- `LAND_OF_DRAGONS`, `LOD` :arrow_right: `THE_LAND_OF_DRAGONS`
+- `HUNDRED_ACRE_WOOD`, `HAW` :arrow_right: `100_ACRE_WOOD`
+- `ATL` :arrow_right: `ATLANTICA`
+- `WORLD_THAT_NEVER_WAS`, `WTNW` :arrow_right: `THE_WORLD_THAT_NEVER_WAS`
 
 #### Examples <!-- omit in toc -->
 
@@ -178,14 +188,19 @@ print(kh2lib.worlds.LAND_OF_DRAGONS) -- 8 (alias for THE_LAND_OF_DRAGONS)
 
 ### `kh2lib.rooms`
 
-- `[world]` {integer|string} World ID or world name (SNAKE_CASE)
-  - `[room]` {integer|string} Room ID or room name
+- {table} worlds table
+  - `key1` {integer|string} ID, name, or short name of world
+  - `value1` {table} rooms table
+    - `key2` {integer|string} ID or name of room within the given world
+    - `value2` {string|integer} Name or ID of room represented by `key2`
 
-Lookup table to convert room IDs to their English names or vice-versa.
-This is a double-indexed table where the first index refers to the world
-and the second index refers to the room.
-Values are accessed by integer properties (IDs) or strings (uppercase world names).
-The first index has the same keys as `kh2lib.worlds`.
+Converts between integer room IDs and English names (in both directions).
+This is a 2-dimensional table, with the first key referencing a world
+(see [`kh2lib.worlds`](#kh2libworlds)) and the second key referencing a room within that world.
+
+Room keys are **_not_** in upper SNAKE_CASE. [Learn more.][explain-naming]
+
+For a full list of rooms, see the full [rooms reference][ref-rooms].
 
 #### Examples <!-- omit in toc -->
 
@@ -195,7 +210,34 @@ print(kh2lib.rooms.HOLLOW_BASTION['Postern']) -- 6
 print(kh2lib.rooms.LOD[0x0C])                 -- Village (Destroyed)
 ```
 
-## Common memory value shortcuts
+### `kh2lib.events`
+
+- {table} worlds table
+  - `key1` {integer|string} ID, name, or short name of world
+  - `value1` {table} rooms table
+    - `key2` {integer|string} ID or name of room within the given world
+    - `value2` {table} events table
+      - `key3` {integer} ID of event within the given room and world
+      - `value3` {string} Name of event represented by `key3`
+
+Converts between integer event IDs and English names, **in that direction only**.
+This is a 3-dimensional table, with the first key referencing a world
+(see [`kh2lib.worlds`](#kh2libworlds)), the second key referencing a room within that world
+(by room ID only), and the third key referencing an event within that room.
+
+Room and Event keys are accessed by **_ID only_** in the events table. [Learn more.][explain-naming]
+
+For a full list of events, see the full [events reference][ref-events].
+
+#### Examples <!-- omit in toc -->
+
+```lua
+print(kh2lib.events[0x04][0x06][0x0001])  -- Looking for Leon
+print(kh2lib.events.HOLLOW_BASTION[6][1]) -- Looking for Leon
+print(kh2lib.events.LOD[0x0C][0xA])       -- The Village With No-One In It
+```
+
+## Game state
 
 > [!WARNING]
 > This part of the library is still a work in progress.
@@ -207,15 +249,17 @@ that the library provides shortcut references to them.
 
 ### `kh2lib.current`
 
-- `world` {integer} Current world ID. Equivalent to `ReadByte(kh2lib.Now + 0x00)`
-- `world_name` {string} Current world name
-- `room` {integer} Current room ID. Equivalent to `ReadByte(kh2lib.Now + 0x01)`
-- `room_name` {string} Current room name
-- `door` {integer} Current door (spawn) ID
-- `place` {integer} Concatenation of current room ID & world ID.
-Equivalent to `ReadShort(kh2lib.Now + 0x01)`
-- `place_name` {string} Current world & room names, separated by a hyphen
-- `location` {string} Alias for `place_name`
+- `world` {integer} Current world ID. Equivalent to `ReadByte(kh2lib.Now + 0x00)`.
+- `world_name` {string} Current world name.
+- `room` {integer} Current room ID. Equivalent to `ReadByte(kh2lib.Now + 0x01)`.
+- `room_name` {string} Current room name.
+- `event` {integer} Current event ID. Equivalent to `ReadShort(kh2lib.Now + 0x08)`.
+- `event_name` {string} Current event name.
+- `door` {integer} Current door (spawn) ID.
+- `place` {integer} Concatenation of current room ID & world ID, as bytes.
+Equivalent to `ReadShort(kh2lib.Now + 0x01)`.
+- `place_name` {string} Current world & room names, separated by a hyphen.
+- `location` {string} Alias for `place_name`.
 
 Table that provides convenience methods (as property getters)
 to get information about the current game state.
@@ -225,18 +269,24 @@ but more information is planned to be added in the future.
 #### Examples <!-- omit in toc -->
 
 ```lua
--- Assume the player is currently in the Secret Passage in Beast's Castle
+-- Assume the player is currently in a cutscene in the Secret Passage in Beast's Castle
 print(kh2lib.current.world)                 -- 5
 print(kh2lib.current.world_name)            -- Beast's Castle
 print(kh2lib.current.room)                  -- 12
 print(kh2lib.current.room_name)             -- Secret Passage
+print(kh2lib.current.event)                 -- 1
+print(kh2lib.current.event_name)            -- The Dark Lanterns
 string.format('0x%x', kh2lib.current.place) -- 0x0C05
 print(kh2lib.current.place_name)            -- Beast's Castle - Secret Passage
 print(kh2lib.current.location)              -- Beast's Castle - Secret Passage
 ```
 
 <!-- Reference links -->
-[guides]: /docs/how_to_guides/
-[tutorials]: /docs/tutorials/
-[addresses]: /docs/reference/addresses/README.md
-[constants]: /docs/reference/constants/README.md
+[guide-folder]: /docs/how_to_guides/
+[tut-folder]: /docs/tutorials/
+[ref-addresses]: ./addresses/README.md
+[ref-constants]: ./constants/README.md
+[ref-worlds]: ./constants/worlds.md
+[ref-rooms]: ./constants/rooms.md
+[ref-events]: ./constants/events.md
+[explain-naming]: /docs/explanations/naming_convention.md

@@ -463,15 +463,25 @@ local function add_game_state_table()
     local mt = {
         --- Defines getters as syntactical sugar for member variables
         --- @param self GameState
-        --- @param key 'world'|'world_name'|'room'|'room_name'|'door'|'place'|'place_name'|'location'
+        --- @param key 'world'
+        --- |'world_name'
+        --- |'room'
+        --- |'room_name'
+        --- |'event'
+        --- |'door'
+        --- |'place'
+        --- |'place_name'
+        --- |'location'
         --- @return integer|string|nil
         __index = function (self, key)
             local BASE_ADDRESS = kh2lib.Now
             local offsets = kh2lib._constants._offsets
             local worlds = kh2lib.worlds
             local rooms = kh2lib.rooms
+            local events = kh2lib.events
             local world_id = ReadByte(BASE_ADDRESS + offsets.now.WORLD)
             local room_id = ReadByte(BASE_ADDRESS + offsets.now.ROOM)
+            local event_id = ReadShort(BASE_ADDRESS + offsets.now.EVENT)
 
             -- Game is still in bootup sequence
             -- TODO: Probably handle this differently in the future so that
@@ -487,6 +497,10 @@ local function add_game_state_table()
                 return room_id
             elseif key == 'room_name' then
                 return rooms[world_id][room_id]
+            elseif key == 'event' then
+                return event_id
+            elseif key == 'event_name' then
+                return events[world_id][room_id][event_id]
             elseif key == 'door' then
                 return ReadShort(BASE_ADDRESS + offsets.now.DOOR)
             elseif key == 'place' then
