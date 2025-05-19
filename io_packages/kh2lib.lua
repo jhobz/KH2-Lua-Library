@@ -25,7 +25,13 @@ KH2_VERSION_EPIC_1_0_0_10 = 0x020A
 -- Steam 1.0.0.10
 KH2_VERSION_STEAM_1_0_0_10 = 0x030A
 
--- @module kh2lib
+--- KH2 Lua Library (KH2Lib)
+--- @class (exact) KH2Lib:LegacyKH2Lib
+--- @field worlds WorldsLUT
+--- @field rooms RoomsLUT
+--- @field events EventsLUT
+--- @field current table
+--- @field private _constants table
 local kh2lib = {}
 
 -- Scripts can call `RequireKH2LibraryVersion` to declare a minimum version of the library they expect.
@@ -432,8 +438,7 @@ local function add_lookup_tables()
         return
     end
 
-    kh2lib.constants = luts.constants
-    kh2lib.offsets = luts.offsets
+    kh2lib._constants = luts._constants
     kh2lib.worlds = luts.worlds
     kh2lib.rooms = luts.rooms
     kh2lib.events = luts.events
@@ -462,7 +467,7 @@ local function add_game_state_table()
         --- @return integer|string|nil
         __index = function (self, key)
             local BASE_ADDRESS = kh2lib.Now
-            local offsets = kh2lib.offsets
+            local offsets = kh2lib._constants._offsets
             local worlds = kh2lib.worlds
             local rooms = kh2lib.rooms
             local world_id = ReadByte(BASE_ADDRESS + offsets.now.WORLD)

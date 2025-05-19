@@ -72,7 +72,7 @@ local function create_rooms_lut()
 end
 
 --- Create lookup table for events to get names from IDs (uni-directional)
---- @return {[WorldId|WorldName]: {[RoomId]: {[integer]: string}}}
+--- @return {[WorldId|WorldName]: {[RoomId]: {[EventId]: EventName}}}
 local function create_events_lut()
     local lut = {}
     for _, event in ipairs(EVENTS) do
@@ -130,19 +130,26 @@ local lut_events = create_events_lut()
 add_world_aliases_to_table(lut_events)
 
 return {
-    offsets = OFFSETS,
-
     --- Lookup table for converting between world IDs and names
+    --- @class WorldsLUT
+    --- @field [WorldId] WorldName
+    --- @field [WorldName] WorldId
     worlds = lut_worlds,
 
     --- Lookup table for converting between room IDs and names
+    --- @class RoomsLUT
+    --- @field [WorldId] {[RoomId]: RoomName}|{[RoomName]: RoomId}
+    --- @field [WorldName] {[RoomId]: RoomName}|{[RoomName]: RoomId}
     rooms = lut_rooms,
 
     --- Lookup table for converting event IDs to names
+    --- @class EventsLUT
+    --- @field [WorldId] {[RoomId]: {[EventId]: EventName}}
+    --- @field [WorldName] {[RoomId]: {[EventId]: EventName}}
     events = lut_events,
 
-    constants = {
-        offsets = OFFSETS,
+    _constants = {
+        _offsets = OFFSETS,
         worlds = WORLDS,
         rooms = ROOMS,
         events = EVENTS,
