@@ -1,14 +1,15 @@
 # Class: `Room` <!-- omit in toc -->
 
-- Extends [`KH2ValueConstant`][kh2valueconstant]
+- Extends [`KH2ValueConstant`][ref-kh2valueconstant]
 
 This library defines a Room class used to create a static list of all rooms and their relevant data.
-It's unlikely that you will ever need to interface with this class directly.
-It is used internally to create the public lookup table found at `kh2lib.rooms`.
-The [full list of constants][constants] can be accessed directly, but it is generally not recommended
-unless you have a special use-case not covered by the lookup tables or convenience methods.
+It's unlikely that you will ever need to interface with this class directly. It is used internally
+to create the public lookup table found at `kh2lib.rooms`.
+The [full list of constants][ref-constants] can be accessed directly,
+but it is generally not recommended unless you have a special use-case not covered
+by the lookup tables or convenience methods.
 
-## `new Room([options])` <!-- omit in toc -->
+## `Room:new([options])` <!-- omit in toc -->
 
 - `options` {table}
   - `id` {integer} One-byte room ID (from game). Default: `-1`
@@ -29,7 +30,7 @@ Number between 0 and 255 (`0x00` to `0xFF`).
 
 ## List of all rooms <!-- omit in toc -->
 
-This section contains all of the rooms indexed as Room objects in [`rooms.lua`][rooms_code],
+This section contains all of the rooms indexed as Room objects in [`rooms.lua`][code-rooms],
 separated by world. It also serves as a handy reference for looking up the IDs and names
 for individual rooms, in case you need to compare against one in your script.
 
@@ -96,7 +97,7 @@ Jump to section:
 | 0x29 | 0x02     | The Old Mansion (Nobodies Fight)      |
 
 <!-- Reference links -->
-[constants]: /docs/reference/constants/README.md
-[rooms_code]: /io_packages/kh2lib/constants/rooms.lua
-[kh2valueconstant]: /docs/reference/constants/kh2valueconstant.md
+[ref-constants]: ./README.md
+[code-rooms]: /io_packages/kh2lib/constants/rooms.lua
+[ref-kh2valueconstant]: ./kh2valueconstant.md
 [1]: https://en.wikipedia.org/wiki/Hexadecimal#:~:text=Hexadecimal%20\(also%20known,ten%20to%20fifteen.&text=In%20programming%2C%20several%20notations%20denote%20hexadecimal%20numbers%2C%20usually%20involving%20a%20prefix.%20The%20prefix%200x%20is%20used%20in%20C%2C%20which%20would%20denote%20this%20value%20as%200x2C7.

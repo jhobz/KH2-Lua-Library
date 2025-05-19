@@ -1,14 +1,15 @@
 # Class: `World`
 
-- Extends [`KH2ValueConstant`][kh2valueconstant]
+- Extends [`KH2ValueConstant`][ref-kh2valueconstant]
 
-This library defines a World class used to create a static list of all worlds and their relevant data.
-It's unlikely that you will ever need to interface with this class directly.
-It is used internally to create the public lookup table found at `kh2lib.worlds`.
-The [full list of constants][constants] can be accessed directly, but it is generally not recommended
-unless you have a special use-case not covered by the lookup tables or convenience methods.
+This library defines a World class used to create a static list of all worlds
+and their relevant data. It's unlikely that you will ever need to interface with
+this class directly. It is used internally to create the public lookup table
+found at `kh2lib.worlds`. The [full list of constants][ref-constants] can be accessed directly,
+but it is generally not recommended unless you have a special use-case not covered
+by the lookup tables or convenience methods.
 
-## `new World([options])`
+## `World:new([options])`
 
 - `options` {table}
   - `id` {integer} One-byte world ID (from game). Default: `-1`
@@ -26,7 +27,7 @@ All instances contain the built-in `KH2ValueConstant` properties and:
 
 ## List of all worlds
 
-The table below contains all of the worlds indexed as World objects in [`worlds.lua`][worlds_code].
+The table below contains all of the worlds indexed as World objects in [`worlds.lua`][code-worlds].
 
 IDs are listed in [hexadecimal format][1], but can be represented as simple integers as well
 (e.g. `0x11 == 17`).
@@ -53,7 +54,7 @@ IDs are listed in [hexadecimal format][1], but can be represented as simple inte
 | 0x12 | The World That Never Was | TWTNW      |
 
 <!-- Reference links -->
-[constants]: /docs/reference/constants/README.md
-[worlds_code]: /io_packages/kh2lib/constants/worlds.lua
-[kh2valueconstant]: /docs/reference/constants/kh2valueconstant.md
+[ref-constants]: ./README.md
+[code-worlds]: /io_packages/kh2lib/constants/worlds.lua
+[ref-kh2valueconstant]: ./kh2valueconstant.md
 [1]: https://en.wikipedia.org/wiki/Hexadecimal#:~:text=Hexadecimal%20\(also%20known,ten%20to%20fifteen.&text=In%20programming%2C%20several%20notations%20denote%20hexadecimal%20numbers%2C%20usually%20involving%20a%20prefix.%20The%20prefix%200x%20is%20used%20in%20C%2C%20which%20would%20denote%20this%20value%20as%200x2C7.
