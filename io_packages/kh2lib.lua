@@ -468,6 +468,7 @@ local function add_game_state_table()
         --- |'room'
         --- |'room_name'
         --- |'event'
+        --- |'event_name'
         --- |'door'
         --- |'place'
         --- |'place_name'
