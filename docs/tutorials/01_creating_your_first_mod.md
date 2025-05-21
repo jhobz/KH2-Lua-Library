@@ -4,6 +4,8 @@
 > This document serves as an in-depth tutorial for creating your first Lua-based OpenKH mod
 > from scratch. If you're just looking to get up and running quickly, copy one of
 > the templates from the [examples_templates folder][example-folder] and go from there.
+<!---->
+> *Estimated time to complete: **~20 minutes**.*
 
 Looking to create an OpenKH Lua mod and don't know where to begin? Good news, you've found
 the right place! This tutorial will take you from zero to hero in no time, **even if you have
@@ -47,7 +49,7 @@ For development you'll need:
 - A text editor. Something as simple as Notepad *technically* works, but a full-fledged IDE, such as
 [VS Code][1] is highly recommended for faster (and easier) development.
   - *Recommended*: Install the [Lua VS Code extension][2].
-- [OpenKH Mods Manager][4], with this library (`KH2FM-Mods-equations19/KH2-Lua-Library`) installed.
+- [OpenKH Mods Manager][4] with KH2 Lua Library (`KH2FM-Mods-equations19/KH2-Lua-Library`) installed.
   - You can find instructions on setting up OpenKH for KH2 Randomizer on the [KH2 Rando website][3].
 - A file browser opened to your OpenKH path.
 
@@ -212,7 +214,7 @@ RequirePCGameVersion()
 
 Let's break that down section by section.
 
-1. Import the library
+1. Import the library.
 
     ```lua
     kh2lib_status, kh2lib = pcall(require, 'kh2lib')
@@ -223,7 +225,7 @@ Let's break that down section by section.
     it stores the library itself in the second variable (`kh2lib`). The module also runs some code
     when imported to detect the game version and check if the script can execute properly.
 
-2. Check if the import failed (possibly because the mod isn't present)
+2. Check if the import failed (possibly because the mod isn't present).
 
     ```lua
     if not kh2lib_status then
@@ -247,7 +249,7 @@ Let's break that down section by section.
 
     The `return` keyword stops executing the current function, in this case `_OnInit()`, instantly.
 
-3. Declare the minimum version number
+3. Declare the minimum version number.
 
     ```lua
     RequireKH2LibraryVersion(LIBRARY_VERSION)
@@ -258,7 +260,7 @@ Let's break that down section by section.
     scripts may declare that they require a newer version of the library. If you need a higher version,
     simply increase the number in the `LIBRARY_VERSION` variable you defined at the top of the file.
 
-4. Optionally, require a PC version of the game
+4. Optionally, require a PC version of the game.
 
     ```lua
     RequirePCGameVersion()
