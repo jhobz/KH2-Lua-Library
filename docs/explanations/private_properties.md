@@ -105,8 +105,8 @@ are required for all mod scripts.
 
 ## More information
 
-This library primarily follows the [LuaRocks style guide][2], with some small adjustments, which
-helped to inform some of the above decisions.
+This project primarily follows the [LuaRocks style guide][2], with some minor adjustments
+(visible in `.editorconfig`), which helped to inform some of the above decisions.
 If you decide to contribute to this project, please try to follow the same conventions.
 
 <!-- Reference links -->

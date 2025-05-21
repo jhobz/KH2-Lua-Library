@@ -1,7 +1,7 @@
 # Using constants in scripts
 
 > [!NOTE]
-> For the full technical reference sheet, see [Constants reference][ref-constants].
+> For the full technical reference sheet, see [Constants][ref-constants].
 
 There are many [constants][1] in Kingdom Hearts II: worlds, rooms, events, items, drive forms...
 All of these have, at minimum, a name and an ID.
