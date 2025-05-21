@@ -2,7 +2,7 @@
 
 A library of Lua code that can be imported by Kingdom Hearts 2 Lua scripts.
 
-#### Library Philosophy
+## Library philosophy
 
 One of the most apparent benefits to using a Lua Library for KH2 is that Lua scripts correctly utilizing the library
 shouldn't have to be individually updated after the game receives a patch.
@@ -27,12 +27,20 @@ future. Enter `KH2FM-Mods-equations19/KH2-Lua-Library` into the text box for `Ad
 If you do not use OpenKH Mods Manager, copy the entire `io_packages` folder into the folder that contains your other Lua
 scripts.
 
-## Developer Docs
+## Developing mods with Lua Library
 
-See [Developer Docs](./DeveloperDocs.md).
+There are four different types of documentation in this project to help you develop your mods:
+
+1. [Tutorials][tut-folder] provide in-depth guides on learning
+how to develop mods using KH2 Lua Library.
+2. [How-to guides][guide-folder] teach how to perform specific actions.
+3. [Explanations][explain-folder] provide context to meta decisions about the project.
+4. [Reference sheets][ref-folder] are technical descriptions of the classes,
+tables, and modules in the project.
 
 ## Contributing
 
+<!-- TODO: Add other ways to contribute, such as verification, documentation, etc. -->
 Community participation is key to the success of a project such as this one. If you have found memory addresses for KH2,
 please consider contributing them to the library.
 
@@ -43,3 +51,9 @@ please consider contributing them to the library.
   (https://github.com/KH2FM-Mods-Num/GoA-ROM-Edition)
 - Deathofall84, Denhonator, and contributors for addresses taken from various scripts at
   (https://github.com/Denhonator/KHPCSpeedrunTools)
+
+<!-- Reference links -->
+[tut-folder]: /docs/tutorials/
+[guide-folder]: /docs/how_to_guides/
+[explain-folder]: /docs/explanations/
+[ref-folder]: /docs/reference/
