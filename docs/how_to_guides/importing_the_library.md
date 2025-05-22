@@ -85,4 +85,4 @@ function _OnInit()
 ```
 
 <!-- Reference links -->
-[templates]: /examples_templates/
+[templates]: /templates/

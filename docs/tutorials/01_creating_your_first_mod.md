@@ -3,7 +3,7 @@
 > [!NOTE]
 > This document serves as an in-depth tutorial for creating your first Lua-based OpenKH mod
 > from scratch. If you're just looking to get up and running quickly, copy one of
-> the templates from the [examples_templates folder][example-folder] and go from there.
+> the [templates][templates] and go from there.
 <!---->
 > *Estimated time to complete: **~20 minutes**.*
 
@@ -459,7 +459,7 @@ For guides on how to perform more specific actions, see the [guides section][gui
 Have ideas on how this tutorial could be improved? Let us know by [opening an issue][issues].
 
 <!-- Reference links -->
-[example-folder]: /examples_templates/
+[templates]: /templates/
 [tut-folder]: ./
 [guide-folder]: /docs/how_to_guides/
 [issues]: https://github.com/KH2FM-Mods-equations19/KH2-Lua-Library/issues
