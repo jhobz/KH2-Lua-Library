@@ -333,7 +333,7 @@ Now, when you build & run your mod with OpenKH, your script will log its name to
 it's ready!
 
 Give it a try yourself! Launch the OpenKH mods manager. Your mod should be in the list,
-but not enabled. Enable it, select Build & Run (or press Ctrl+F5), and wait for the game to boot up.
+but not enabled. Enable it, select Build & Run (or press F5), and wait for the game to boot up.
 Once it does, press F2 to open the script console. You should see your message among the scripts!
 
 ### Running code every game frame
