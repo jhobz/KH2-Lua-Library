@@ -103,7 +103,6 @@ A few of the most common are listed below, as an example.
 For a full list of exposed addresses, see [Addresses][ref-addresses].
 
 - `kh2lib.Now` {integer} Current location data
-- `kh2lib.Sve` {integer} Saved location
 - `kh2lib.Save` {integer} Save file data
 - `kh2lib.Obj0Pointer` {integer} Pointer address for `00objentry.bin`
 - `kh2lib.Sys3Pointer` {integer} Pointer address for `03system.bin`
@@ -178,12 +177,12 @@ Additionally, some aliases for common alternate names and abbreviations are prov
 #### Examples <!-- omit in toc -->
 
 ```lua
-print(kh2lib.worlds[0x04])           -- Hollow Bastion
-print(kh2lib.worlds.HOLLOW_BASTION)  -- 4
-print(kh2lib.worlds.HB)              -- 4 (alias for HOLLOW_BASTION)
-print(kh2lib.worlds.RADIANT_GARDEN)  -- 4 (alias for HOLLOW_BASTION)
-print(kh2lib.worlds[8])              -- The Land of Dragons
-print(kh2lib.worlds.LAND_OF_DRAGONS) -- 8 (alias for THE_LAND_OF_DRAGONS)
+Log(kh2lib.worlds[0x04])           -- Hollow Bastion
+Log(kh2lib.worlds.HOLLOW_BASTION)  -- 4
+Log(kh2lib.worlds.HB)              -- 4 (alias for HOLLOW_BASTION)
+Log(kh2lib.worlds.RADIANT_GARDEN)  -- 4 (alias for HOLLOW_BASTION)
+Log(kh2lib.worlds[8])              -- The Land of Dragons
+Log(kh2lib.worlds.LAND_OF_DRAGONS) -- 8 (alias for THE_LAND_OF_DRAGONS)
 ```
 
 ### `kh2lib.rooms`
@@ -205,9 +204,9 @@ For a full list of rooms, see the full [rooms reference][ref-rooms].
 #### Examples <!-- omit in toc -->
 
 ```lua
-print(kh2lib.rooms[0x04][0x06])               -- Postern
-print(kh2lib.rooms.HOLLOW_BASTION['Postern']) -- 6
-print(kh2lib.rooms.LOD[0x0C])                 -- Village (Destroyed)
+Log(kh2lib.rooms[0x04][0x06])               -- Postern
+Log(kh2lib.rooms.HOLLOW_BASTION['Postern']) -- 6
+Log(kh2lib.rooms.LOD[0x0C])                 -- Village (Destroyed)
 ```
 
 ### `kh2lib.events`
@@ -232,9 +231,9 @@ For a full list of events, see the full [events reference][ref-events].
 #### Examples <!-- omit in toc -->
 
 ```lua
-print(kh2lib.events[0x04][0x06][0x0001])  -- Looking for Leon
-print(kh2lib.events.HOLLOW_BASTION[6][1]) -- Looking for Leon
-print(kh2lib.events.LOD[0x0C][0xA])       -- The Village With No-One In It
+Log(kh2lib.events[0x04][0x06][0x0001])  -- Looking for Leon
+Log(kh2lib.events.HOLLOW_BASTION[6][1]) -- Looking for Leon
+Log(kh2lib.events.LOD[0x0C][0xA])       -- The Village With No-One In It
 ```
 
 ## Game state
@@ -270,15 +269,15 @@ but more information is planned to be added in the future.
 
 ```lua
 -- Assume the player is currently in a cutscene in the Secret Passage in Beast's Castle
-print(kh2lib.current.world)                 -- 5
-print(kh2lib.current.world_name)            -- Beast's Castle
-print(kh2lib.current.room)                  -- 12
-print(kh2lib.current.room_name)             -- Secret Passage
-print(kh2lib.current.event)                 -- 1
-print(kh2lib.current.event_name)            -- The Dark Lanterns
-string.format('0x%x', kh2lib.current.place) -- 0x0C05
-print(kh2lib.current.place_name)            -- Beast's Castle - Secret Passage
-print(kh2lib.current.location)              -- Beast's Castle - Secret Passage
+Log(kh2lib.current.world)                    -- 5
+Log(kh2lib.current.world_name)               -- Beast's Castle
+Log(kh2lib.current.room)                     -- 12
+Log(kh2lib.current.room_name)                -- Secret Passage
+Log(kh2lib.current.event)                    -- 1
+Log(kh2lib.current.event_name)               -- The Dark Lanterns
+string.format('02X%x', kh2lib.current.place) -- 0x0C05
+Log(kh2lib.current.place_name)               -- Beast's Castle - Secret Passage
+Log(kh2lib.current.location)                 -- Beast's Castle - Secret Passage
 ```
 
 <!-- Reference links -->

@@ -45,8 +45,8 @@ if the value is `false`.
 function _OnInit()
     kh2libstatus, kh2lib = pcall(require, "kh2lib")
     ...
-    CanExecute = kh2lib.CanExecute
-    if not CanExecute then
+    can_execute = kh2lib.CanExecute
+    if not can_execute then
         return
     end
     
@@ -54,7 +54,7 @@ function _OnInit()
 end
 
 function _OnFrame()
-    if not CanExecute then
+    if not can_execute then
         return
     end
 

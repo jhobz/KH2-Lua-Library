@@ -1,6 +1,4 @@
-LUAGUI_NAME = 'KH2 Lua Library Example Commented'
-LUAGUI_AUTH = 'Alios'
-LUAGUI_DESC = 'An example Lua script for learning how to use the KH2 Lua Library'
+LUA_NAME = 'KH2 Lua Library Example Commented'
 
 local kh2lib_status, kh2lib, can_execute
 local now, save

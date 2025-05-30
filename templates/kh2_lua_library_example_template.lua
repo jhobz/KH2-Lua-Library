@@ -1,6 +1,4 @@
-LUAGUI_NAME = ''
-LUAGUI_AUTH = ''
-LUAGUI_DESC = ''
+LUA_NAME = '' -- Your mod's name
 
 local kh2lib_status, kh2lib, can_execute
 

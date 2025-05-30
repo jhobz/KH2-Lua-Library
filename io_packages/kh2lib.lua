@@ -89,31 +89,29 @@ function ReadPointer(address)
     end
 end
 
--- Logs a message to the console, using an appropriate call per platform.
+-- Logs a message to the console
 function Log(message)
-    if kh2lib.OnPC then
-        ConsolePrint(message)
-    else
-        print(message)
-    end
+    ConsolePrint(tostring(message))
 end
 
--- Logs a warning message to the console, using an appropriate call per platform.
+-- Logs a message to the console, with "MESSAGE: " prefix
+function LogMessage(message)
+    ConsolePrint(tostring(message), 0)
+end
+
+-- Logs a success message to the console
+function LogSuccess(message)
+    ConsolePrint(tostring(message), 1)
+end
+
+-- Logs a warning message to the console
 function LogWarning(message)
-    if kh2lib.OnPC then
-        ConsolePrint(message, 2)
-    else
-        print('WARNING: ' .. message)
-    end
+    ConsolePrint(tostring(message), 2)
 end
 
--- Logs an error message to the console, using an appropriate call per platform.
+-- Logs an error message to the console
 function LogError(message)
-    if kh2lib.OnPC then
-        ConsolePrint(message, 3)
-    else
-        print('ERROR: ' .. message)
-    end
+    ConsolePrint(tostring(message), 3)
 end
 
 --- @deprecated

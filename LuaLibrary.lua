@@ -1,9 +1,10 @@
+LUA_NAME = 'LuaLibrary'
 local kh2lib_status, kh2lib, can_execute
 
 function _OnInit()
     kh2lib_status, kh2lib = pcall(require, 'kh2lib')
     if not kh2lib_status then
-        print('ERROR: KH2-Lua-Library mod is not installed')
+        ConsolePrint('KH2-Lua-Library mod is not installed', 3)
         can_execute = false
         return
     end
