@@ -34,8 +34,9 @@ KH2_VERSION_STEAM_1_0_0_10 = 0x030A
 --- @field private _constants table
 local kh2lib = {}
 
--- Scripts can call `RequireKH2LibraryVersion` to declare a minimum version of the library they expect.
--- If the actual version is too low, `CanExecute` will be set to false and a message is printed to the console.
+--- Scripts can call `RequireKH2LibraryVersion` to declare a minimum version of the library they expect.
+--- If the actual version is too low, `CanExecute` will be set to false and a message is printed to the console.
+--- @param version integer required version
 function RequireKH2LibraryVersion(version)
     if KH2_LIBRARY_VERSION < version then
         local reqStr = tostring(version)
@@ -45,8 +46,8 @@ function RequireKH2LibraryVersion(version)
     end
 end
 
--- Scripts can call `RequirePCGameVersion` to declare that the script expects to run on PC ports only.
--- If not on a PC port, `CanExecute` will be set to false and a message is printed to the console.
+--- Scripts can call `RequirePCGameVersion` to declare that the script expects to run on PC ports only.
+--- If not on a PC port, `CanExecute` will be set to false and a message is printed to the console.
 function RequirePCGameVersion()
     if not kh2lib.OnPC then
         LogError('This script expects to run on one of the PC ports of the game and will not execute.')
@@ -54,9 +55,10 @@ function RequirePCGameVersion()
     end
 end
 
--- Scripts can call `DenyGameVersions` to declare specific game version(s) that are known to not be compatible with the
--- script, perhaps due to not being able to find memory addresses for older game versions.
--- If the detected version is one of those, `CanExecute` will be set to false and a message is printed to the console.
+--- Scripts can call `DenyGameVersions` to declare specific game version(s) that are known to not be compatible with the
+--- script, perhaps due to not being able to find memory addresses for older game versions.
+--- If the detected version is one of those, `CanExecute` will be set to false and a message is printed to the console.
+--- @param ... table list of required versions, as additional arguments
 function DenyGameVersions(...)
     local arg = { ... }
     for _, version in pairs(arg) do
@@ -68,19 +70,24 @@ function DenyGameVersions(...)
     end
 end
 
--- Performs a bitwise `OR` of the value at a specified address using a specified mask and writes the updated byte.
--- This is usually used to set one or more bits in a byte to `1`.
+--- Performs a bitwise `OR` of the value at a specified address using a specified mask and writes the updated byte.
+--- This is usually used to set one or more bits in a byte to `1`.
+--- @param address number
+--- @param mask number
 function BitOr(address, mask)
     WriteByte(address, ReadByte(address) | mask)
 end
 
--- Performs a bitwise `AND NOT` of the value at a specified address using a specified mask and writes the updated byte.
--- This is usually used to set one or more bits in a byte to `0`.
+--- Performs a bitwise `AND NOT` of the value at a specified address using a specified mask and writes the updated byte.
+--- This is usually used to set one or more bits in a byte to `0`.
+--- @param address number
+--- @param mask number
 function BitNot(address, mask)
     WriteByte(address, ReadByte(address) & ~mask)
 end
 
--- Reads and returns the pointer value at the given address.
+--- Reads and returns the pointer value at the given address.
+--- @param address number
 function ReadPointer(address)
     if kh2lib.OnPC then
         return ReadLong(address)
@@ -89,27 +96,32 @@ function ReadPointer(address)
     end
 end
 
--- Logs a message to the console
+--- Logs a message to the console
+--- @param message any
 function Log(message)
     ConsolePrint(tostring(message))
 end
 
--- Logs a message to the console, with "MESSAGE: " prefix
+--- Logs a message to the console, with "MESSAGE: " prefix
+--- @param message any
 function LogMessage(message)
     ConsolePrint(tostring(message), 0)
 end
 
--- Logs a success message to the console
+--- Logs a success message to the console
+--- @param message any
 function LogSuccess(message)
     ConsolePrint(tostring(message), 1)
 end
 
--- Logs a warning message to the console
+--- Logs a warning message to the console
+--- @param message any
 function LogWarning(message)
     ConsolePrint(tostring(message), 2)
 end
 
--- Logs an error message to the console
+--- Logs an error message to the console
+--- @param message any
 function LogError(message)
     ConsolePrint(tostring(message), 3)
 end

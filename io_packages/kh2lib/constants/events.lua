@@ -1,3 +1,4 @@
+-- Creates a string reference to the current directory, which is needed for relative imports
 local BASE_PATH = (...):match('(.-)[^%.]+$')
 local KH2ValueConstant = require(BASE_PATH .. 'base_class')
 

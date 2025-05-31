@@ -1,3 +1,4 @@
+-- Creates a string reference to the current directory, which is needed for relative imports
 local BASE_PATH = (...):match('(.-)[^%.]+$')
 
 -- Constants
@@ -42,7 +43,7 @@ local function create_worlds_lut()
     return lut
 end
 
---- Create lookup table for names to convert between IDs and names (bi-directional)
+--- Create lookup table for rooms to convert between IDs and names (bi-directional)
 --- @return {[WorldId|WorldName]: {[RoomId]: RoomName}}|{[WorldId|WorldName]: {[RoomName]: RoomId}}
 local function create_rooms_lut()
     local lut = {}
