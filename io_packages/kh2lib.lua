@@ -485,7 +485,7 @@ local function add_game_state_table()
             -- Game is still in bootup sequence
             -- TODO: Probably handle this differently in the future so that
             -- title screen can actually be detected
-            if world_id == 255 or room_id == 255 then return nil end
+            if world_id == 255 or world_id == 0 or room_id == 255 then return nil end
 
             -- read current area value from game before returning
             if key == 'world' then
