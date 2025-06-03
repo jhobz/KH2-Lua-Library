@@ -132,7 +132,7 @@ local rooms = {
   Room:new{ id = 0x05, world_id = 0x06, name = 'Valley of the Dead' },
   Room:new{ id = 0x06, world_id = 0x06, name = "Hades' Chamber" },
   Room:new{ id = 0x07, world_id = 0x06, name = 'Cave of the Dead: Entrance' },
-  Room:new{ id = 0x08, world_id = 0x06, name = 'Well of Capitivity' },
+  Room:new{ id = 0x08, world_id = 0x06, name = 'Well of Captivity' },
   Room:new{ id = 0x09, world_id = 0x06, name = 'The Underdrome' },
   Room:new{ id = 0x0A, world_id = 0x06, name = 'Cave of the Dead: Inner Chamber' },
   Room:new{ id = 0x0B, world_id = 0x06, name = 'Underworld Caverns: Entrance' },
