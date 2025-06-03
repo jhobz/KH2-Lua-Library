@@ -88,12 +88,13 @@ end
 
 --- Reads and returns the pointer value at the given address.
 --- @param address number
+--- @return address
 function ReadPointer(address)
     if kh2lib.OnPC then
         return ReadLong(address)
-    else
-        return ReadInt(address)
     end
+
+    return ReadInt(address)
 end
 
 --- Logs a message to the console
