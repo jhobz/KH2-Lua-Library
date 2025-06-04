@@ -21,7 +21,7 @@ end
 -- ////////
 -- Auto-generated KH2FM room data tables
 -- ////////
---- @type {[string]: Room[]}
+--- @type Room[]
 local rooms = {
   -- World of Darkness
   Room:new{ id = 0x00, world_id = 0x01, name = 'The Dark Margin' },

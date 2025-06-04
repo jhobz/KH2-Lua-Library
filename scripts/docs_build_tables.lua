@@ -53,7 +53,8 @@ local function md_table_row(table, order, formats)
     for _, key in ipairs(order) do
         local value = table[key]
         local pattern = formats[key]
-        values = values .. string.format(pattern, value) .. '|'
+        local formatted = value and string.format(pattern, value) or '-'
+        values = values .. formatted .. '|'
     end
 
     return values .. '\n'
