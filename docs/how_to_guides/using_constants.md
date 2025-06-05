@@ -22,10 +22,9 @@ this is achieved primarily through the use of metatables and [LuaCATS annotation
 
 ## Using lookup tables
 
-Constants are usually not referenced by their class objects directly in scripts.
-Instead, lookup tables are provided for the most common use-case: converting between IDs and names.
-Lookup tables are properties on the top-level `kh2lib` table and have the same name
-as the type of the constant.
+Lookup tables are properties on the `kh2lib` table and have the same name as the type of constant.
+They are used to fetch a given constant by some criteria, usually its ID or name. Some constants
+require additional context, such as events requiring the world and room in which they take place.
 
 For example, if your script needs to detect that the player is in the Postern in Hollow Bastion,
 you would traditionally have to know the game IDs for both Hollow Bastion and Postern.
@@ -40,34 +39,34 @@ end
 
 While this isn't a big deal for two IDs, memorizing thousands of IDs across the game is impractical.
 With lookup tables, you can instead check for their names without knowing the IDs at all.
-This doesn't necessarily result in less code, but it does result in code that is
-_significantly easier to read and write._
+This doesn't _always_ result in less code, but it does result in code that is
+**significantly easier to read and write.**
 
 ```lua
-local world = ReadByte(kh2lib.Now + kh2lib._constants._offsets.now.WORLD) -- current world ID
-local room = ReadByte(kh2lib.Now + kh2lib._constatns._offsets.now.ROOM) -- current room ID
+local world = ReadByte(kh2lib.Now + 0x00) -- current world ID
+local room = ReadByte(kh2lib.Now + 0x01) -- current room ID
 -- No need to know random IDs to get the needed info, just the actual names
-if world == kh2lib.worlds.HOLLOW_BASTION and room == kh2lib.rooms.HOLLOW_BASTION['Postern'] then
+if world == kh2lib.worlds.HOLLOW_BASTION.id and room == kh2lib.rooms.HOLLOW_BASTION['Postern'].id then
     -- Do your thing here
 end
 ```
 
-Or, even more concisely:
+Or, more concisely, using [`kh2lib.current`][ref-current]:
 
 ```lua
-local world = ReadByte(kh2lib.Now + kh2lib._offsets.now.WORLD) -- current world ID
-local room = ReadByte(kh2lib.Now + kh2lib._offsets.now.ROOM) -- current room ID
-local room_name = kh2lib.rooms[world][room] -- Convert the IDs to the English name of the room
-if room_name == 'Postern' then
+local world = kh2lib.current.world -- current world object
+local room = kh2lib.current.room -- current room object
+if world.name == 'Hollow Bastion' and room.name == 'Postern' then
     -- Do your thing here
 end
 ```
+
+For more information about `kh2lib.current`, see [Game State reference][ref-current] and
+[Game State guide][guide-game-state].
 
 > [!TIP]
-> While the above hopefully serves as a clear example of the advantage of using lookup tables
-> for constants, in practice this example would be made even simpler by the
-> [`kh2lib.current`][ref-current] shortcut table.
-> See guide on [how to get the current game state][guide-game-state].
+> You could also simplify the last example to _only_ check that the room name is "Postern."
+> Be careful about doing this more generally though, as names are not always unique across worlds.
 
 <!-- Reference links -->
 [ref-constants]: /docs/reference/constants/

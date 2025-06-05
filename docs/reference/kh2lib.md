@@ -19,7 +19,7 @@ For in-depth tutorials on building a KH2 lua mod, see [Tutorials][tut-folder].
   - [`BitOr(address, mask)`](#bitoraddress-mask)
   - [`BitNot()`](#bitnot)
   - [`ReadPointer(address)`](#readpointeraddress)
-  - [`Log(message)`, `LogWarning(message)`, `LogError(message)`](#logmessage-logwarningmessage-logerrormessage)
+  - [`Log(message)`, `LogMessage(message)`, `LogWarning(message)`, `LogSuccess(message)`, `LogError(message)`](#logmessage-logmessagemessage-logwarningmessage-logsuccessmessage-logerrormessage)
 - [Lookup tables](#lookup-tables)
   - [`kh2lib.worlds`](#kh2libworlds)
   - [`kh2lib.rooms`](#kh2librooms)
@@ -137,12 +137,13 @@ and writes the updated byte. This is usually used to set one or more bits in a b
 
 Reads and returns a pointer value at a specified address, using the proper size per platform.
 
-### `Log(message)`, `LogWarning(message)`, `LogError(message)`
+### `Log(message)`, `LogMessage(message)`, `LogWarning(message)`, `LogSuccess(message)`, `LogError(message)`
 
 - `message` {string} Message to log to console
 
 Logs a message to the console, using an appropriate print call per platform.
-The `LogWarning` and `LogError` variants print the message in a corresponding color.
+The Message, Warning, Success, and Error variants include a prefix (e.g. "WARNING: ") and
+print the line in an accompanying color.
 
 ## Lookup tables
 
@@ -153,15 +154,15 @@ The `LogWarning` and `LogError` variants print the message in a corresponding co
 
 The library includes a list of constants, their corresponding game IDs, and their memory addresses.
 The full list of available constants can be found at [Constants][ref-constants].
-Below is a reference of provided lookup tables for converting between IDs and human-readable strings.
+Below is a reference of provided lookup tables for accessing these constants by ID and name.
 
 ### `kh2lib.worlds`
 
 - {table} worlds table
   - `key` {integer|string} ID, name, or short name of world
-  - `value` {string|integer} Name or ID of world represented by `key`
+  - `value` {World} world object represented by `key`
 
-Converts between integer world IDs and English names (in both directions).
+Returns the [World][ref-worlds] object for a given world ID, name, or abbreviation.
 This table (and all other lookup tables indexed by world) contains an index for every world's ID,
 English name (in upper SNAKE_CASE), and short name (in upper SNAKE_CASE),
 as defined in the [full list of world objects][ref-worlds].
@@ -191,9 +192,9 @@ Log(kh2lib.worlds.LAND_OF_DRAGONS) -- 8 (alias for THE_LAND_OF_DRAGONS)
   - `key1` {integer|string} ID, name, or short name of world
   - `value1` {table} rooms table
     - `key2` {integer|string} ID or name of room within the given world
-    - `value2` {string|integer} Name or ID of room represented by `key2`
+    - `value2` {Room} room object represented by `key2`
 
-Converts between integer room IDs and English names (in both directions).
+Returns the [Room][ref-rooms] object for a given world and room ID or name.
 This is a 2-dimensional table, with the first key referencing a world
 (see [`kh2lib.worlds`](#kh2libworlds)) and the second key referencing a room within that world.
 
@@ -216,15 +217,15 @@ Log(kh2lib.rooms.LOD[0x0C])                 -- Village (Destroyed)
   - `value1` {table} rooms table
     - `key2` {integer|string} ID or name of room within the given world
     - `value2` {table} events table
-      - `key3` {integer} ID of event within the given room and world
-      - `value3` {string} Name of event represented by `key3`
+      - `key3` {integer|string} ID or name of event within the given room and world
+      - `value3` {Event} event object represented by `key3`
 
-Converts between integer event IDs and English names, **in that direction only**.
+Returns the [Event][ref-events] object for a given world, room, and event ID or name.
 This is a 3-dimensional table, with the first key referencing a world
 (see [`kh2lib.worlds`](#kh2libworlds)), the second key referencing a room within that world
-(by room ID only), and the third key referencing an event within that room.
+(see [`kh2lib.rooms`](#kh2librooms)), and the third key referencing an event within that room.
 
-Room and Event keys are accessed by **_ID only_** in the events table. [Learn more.][explain-naming]
+Room and Event keys are **_not_** in upper SNAKE_CASE. [Learn more.][explain-naming]
 
 For a full list of events, see the full [events reference][ref-events].
 
@@ -248,17 +249,12 @@ that the library provides shortcut references to them.
 
 ### `kh2lib.current`
 
-- `world` {integer} Current world ID. Equivalent to `ReadByte(kh2lib.Now + 0x00)`.
-- `world_name` {string} Current world name.
-- `room` {integer} Current room ID. Equivalent to `ReadByte(kh2lib.Now + 0x01)`.
-- `room_name` {string} Current room name.
-- `event` {integer} Current event ID. Equivalent to `ReadShort(kh2lib.Now + 0x08)`.
-- `event_name` {string} Current event name.
-- `door` {integer} Current door (spawn) ID.
-- `place` {integer} Concatenation of current room ID & world ID, as bytes.
-Equivalent to `ReadShort(kh2lib.Now + 0x01)`.
-- `place_name` {string} Current world & room names, separated by a hyphen.
-- `location` {string} Alias for `place_name`.
+- `world` {World} World object corresponding to ID at `ReadByte(kh2lib.Now)`.
+- `room` {Room} Room object corresponding to IDs at `ReadShort(kh2lib.Now)`.
+- `event` {Event} Event object corresponding to ID at `ReadShort(kh2lib.Now + 0x08)` and world/room.
+- `door` {integer} Current door (spawn) ID. Equivalent to `ReadShort(kh2lib.Now + 0x02)`.
+- `place` {integer} Current room & world IDs, as two-byte integer. Equivalent to `ReadShort(kh2lib.Now)`.
+- `location` {string} Current world & room names, separated by a hyphen.
 
 Table that provides convenience methods (as property getters)
 to get information about the current game state.
@@ -269,15 +265,16 @@ but more information is planned to be added in the future.
 
 ```lua
 -- Assume the player is currently in a cutscene in the Secret Passage in Beast's Castle
-Log(kh2lib.current.world)                    -- 5
-Log(kh2lib.current.world_name)               -- Beast's Castle
-Log(kh2lib.current.room)                     -- 12
-Log(kh2lib.current.room_name)                -- Secret Passage
-Log(kh2lib.current.event)                    -- 1
-Log(kh2lib.current.event_name)               -- The Dark Lanterns
-string.format('02X%x', kh2lib.current.place) -- 0x0C05
-Log(kh2lib.current.place_name)               -- Beast's Castle - Secret Passage
-Log(kh2lib.current.location)                 -- Beast's Castle - Secret Passage
+Log(kh2lib.current.world.id)                  -- 5
+Log(kh2lib.current.world.name)                -- Beast's Castle
+Log(kh2lib.current.room.id)                   -- 12
+Log(kh2lib.current.room.name)                 -- Secret Passage
+Log(kh2lib.current.event.id)                  -- 1
+Log(kh2lib.current.event.name)                -- The Dark Lanterns
+string.format('0x%04X', kh2lib.current.place) -- 0x0C05
+Log(kh2lib.current.location)                  -- Beast's Castle - Secret Passage
+
+Log(kh2lib.current.world) -- tostring() returns name, so prints "Beast's Castle"
 ```
 
 <!-- Reference links -->

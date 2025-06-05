@@ -42,7 +42,7 @@ This will likely be your primary method of interacting with constants.
 
 ## Constant types/classes
 
-Besides [KH2ValueConstant][ref-kh2valueconstant], which should be considered a base class and not
+Besides [KH2ValueConstant][ref-kh2valueconstant], which should be considered an abstract class and not
 instantiated directly, there are several classes of constants defined by the library.
 You can view the reference sheet for each via the links below, which also include a full list of
 game IDs and strings known by the library.

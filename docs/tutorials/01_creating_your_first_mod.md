@@ -356,11 +356,11 @@ Now, in the `_OnFrame()` function, after you check to make sure it's safe to exe
 add the following code:
 
 ```lua
--- get the current world ID from memory
+-- get the current world from memory
 local world = kh2lib.current.world
 
 -- check if it's 100 Acre Wood, and that we're not still there from a previous trip
-if world == kh2lib.worlds['100_ACRE_WOOD'] and world ~= prev_world then
+if world.name == '100 Acre Wood' and world ~= prev_world then
     -- increase the number of visits
     num_visits = num_visits + 1
     -- log out the total number of trips
@@ -381,13 +381,13 @@ This line uses a feature provided by version 3 of the Lua Library to read a byte
 game's memory and return the ID of the current world.
 
 ```lua
-if world == kh2lib.worlds['100_ACRE_WOOD'] and world ~= prev_world then
+if world.name == '100 Acre Wood' and world ~= prev_world then
 ```
 
 This if statement makes two checks:
 
-1. Is the world ID the same as the world ID for 100 Acre Wood?
-2. Is the world ID different than the world ID from last frame?
+1. Is the name of the world "100 Acre Wood"?
+2. Is the world different than the world from last frame?
 
 If both of those conditions are true, then we increase the value of `num_visits` by 1
 and log a message out to the console. Finally, we store the current world ID in
@@ -437,7 +437,7 @@ end
 function _OnFrame()
     local world = kh2lib.current.world
 
-    if world == kh2lib.worlds['100_ACRE_WOOD'] and world ~= prev_world then
+    if world.name == '100 Acre Wood' and world ~= prev_world then
         num_visits = num_visits + 1
         Log('Visited Pooh ' .. num_visits .. ' times.')
     end
