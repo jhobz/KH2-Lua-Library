@@ -432,7 +432,7 @@ local events = {
   Event:new{ id = 0x0109, room_id = 0x1B, world_id = 0x04, name = 'The Hidden Room' },
   Event:new{ id = 0x0073, room_id = 0x20, world_id = 0x04, name = 'Vexen Battle (Absent Silhouette)' },
   Event:new{ id = 0x0078, room_id = 0x20, world_id = 0x04, name = 'The Chilly Academic, Vexen' },
-  Event:new{ id = 0x0079, room_id = 0x20, world_id = 0x04, name = 'The Absent Silhouette of Vexen Disappears' },
+  Event:new{ id = 0x0079, battle_id = 0x0079, map_id = 0x0079, room_id = 0x20, world_id = 0x04, name = 'The Absent Silhouette of Vexen Disappears' },
   Event:new{ id = 0x0082, room_id = 0x20, world_id = 0x04, name = 'Data Vexen Appears' },
   Event:new{ id = 0x0083, room_id = 0x20, world_id = 0x04, name = 'Data Vexen Disappears' },
   Event:new{ id = 0x0092, room_id = 0x20, world_id = 0x04, name = 'Vexen Battle (Data)' },
