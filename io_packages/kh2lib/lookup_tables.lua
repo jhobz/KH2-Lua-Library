@@ -25,9 +25,10 @@ local function upper_snake_case(str)
     return str:gsub(' ', '_'):gsub("'", ''):upper()
 end
 
---- Create lookup table for worlds to convert between IDs and names (bi-directional)
---- @return {[WorldId]: WorldName}|{[WorldName]: WorldId}
+--- Create lookup table for worlds by ID and name
+--- @return {[WorldId|WorldName]: World}
 local function create_worlds_lut()
+    --- @type {[WorldId|WorldName]: World}
     local lut = {}
     for _, world in ipairs(WORLDS) do
         local id = world.id
@@ -35,17 +36,18 @@ local function create_worlds_lut()
         local short_name = world.short_name
         local key_name = upper_snake_case(name)
 
-        lut[id] = name
-        lut[key_name] = id
-        lut[short_name] = id
+        lut[id] = world
+        lut[key_name] = world
+        lut[short_name] = world
     end
 
     return lut
 end
 
 --- Create lookup table for rooms to convert between IDs and names (bi-directional)
---- @return {[WorldId|WorldName]: {[RoomId]: RoomName}}|{[WorldId|WorldName]: {[RoomName]: RoomId}}
+--- @return {[WorldId|WorldName]: {[RoomId|RoomName]: Room}}
 local function create_rooms_lut()
+    --- @type {[WorldId|WorldName]: {[RoomId|RoomName]: Room}}
     local lut = {}
     for _, room in ipairs(ROOMS) do
         local world = WORLDS[room.world_id]
@@ -61,27 +63,30 @@ local function create_rooms_lut()
             lut[world_abbr] = {}
         end
 
-        lut[world_id][id] = name
-        lut[world_id][name] = id
-        lut[world_name][id] = name
-        lut[world_name][name] = id
-        lut[world_abbr][id] = name
-        lut[world_abbr][name] = id
+        lut[world_id][id] = room
+        lut[world_id][name] = room
+        lut[world_name][id] = room
+        lut[world_name][name] = room
+        lut[world_abbr][id] = room
+        lut[world_abbr][name] = room
     end
 
     return lut
 end
 
 --- Create lookup table for events to get names from IDs (uni-directional)
---- @return {[WorldId|WorldName]: {[RoomId]: {[EventId]: EventName}}}
+--- @return {[WorldId|WorldName]: {[RoomId|RoomName]: {[EventId|EventName]: Event}}}
 local function create_events_lut()
+    --- @type {[WorldId|WorldName]: {[RoomId|RoomName]: {[EventId|EventName]: Event}}}
     local lut = {}
     for _, event in ipairs(EVENTS) do
         local world = WORLDS[event.world_id]
         local world_id = world.id
         local world_name = upper_snake_case(world.name)
         local world_abbr = world.short_name
-        local room = event.room_id
+        local room = ROOMS[world_id][event.room_id]
+        local room_id = room.id
+        local room_name = room.name
         local id = event.id
         local name = event.name
 
@@ -91,15 +96,27 @@ local function create_events_lut()
             lut[world_abbr] = {}
         end
 
-        if not lut[world_id][room] then
-            lut[world_id][room] = {}
-            lut[world_name][room] = {}
-            lut[world_abbr][room] = {}
+        if not lut[world_id][room_id] then
+            lut[world_id][room_id] = {}
+            lut[world_id][room_name] = {}
+            lut[world_name][room_id] = {}
+            lut[world_name][room_name] = {}
+            lut[world_abbr][room_id] = {}
+            lut[world_abbr][room_name] = {}
         end
 
-        lut[world_id][room][id] = name
-        lut[world_name][room][id] = name
-        lut[world_abbr][room][id] = name
+        lut[world_id][room_id][id] = event
+        lut[world_id][room_name][id] = event
+        lut[world_id][room_id][name] = event
+        lut[world_id][room_name][name] = event
+        lut[world_name][room_id][id] = event
+        lut[world_name][room_name][id] = event
+        lut[world_name][room_id][name] = event
+        lut[world_name][room_name][name] = event
+        lut[world_abbr][room_id][id] = event
+        lut[world_abbr][room_name][id] = event
+        lut[world_abbr][room_id][name] = event
+        lut[world_abbr][room_name][name] = event
     end
 
     return lut
@@ -131,22 +148,16 @@ local lut_events = create_events_lut()
 add_world_aliases_to_table(lut_events)
 
 return {
-    --- Lookup table for converting between world IDs and names
-    --- @class WorldsLUT
-    --- @field [WorldId] WorldName
-    --- @field [WorldName] WorldId
+    --- Lookup table for getting a World object by ID, name, or abbreviation.
+    --- @type table<WorldId|WorldName, World>
     worlds = lut_worlds,
 
-    --- Lookup table for converting between room IDs and names
-    --- @class RoomsLUT
-    --- @field [WorldId] {[RoomId]: RoomName}|{[RoomName]: RoomId}
-    --- @field [WorldName] {[RoomId]: RoomName}|{[RoomName]: RoomId}
+    --- Lookup table for getting a Room object by World and ID or name.
+    --- @type table<WorldId|WorldName, table<RoomId|RoomName, Room>>
     rooms = lut_rooms,
 
-    --- Lookup table for converting event IDs to names
-    --- @class EventsLUT
-    --- @field [WorldId] {[RoomId]: {[EventId]: EventName}}
-    --- @field [WorldName] {[RoomId]: {[EventId]: EventName}}
+    --- Lookup table for getting an Event object by World, Room, and ID or name.
+    --- @type table<WorldId|WorldName, table<RoomId|RoomName, table<EventId|EventName, Event>>>
     events = lut_events,
 
     _constants = {

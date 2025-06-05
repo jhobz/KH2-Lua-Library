@@ -4,16 +4,16 @@ local KH2ValueConstant = require(BASE_PATH .. 'base_class')
 
 --- Event class containing ID values and human-readable name
 --- @class Event:KH2ValueConstant
---- @field id integer # 2-byte event ID (from game)
---- @field room_id integer # 1-byte room ID (from game)
---- @field world_id integer # 1-byte world ID (from game)
---- @field name string # human-readable name of event
---- @field battle_id? integer # 2-byte battle ID (from game)
---- @field map_id? integer # 2-byte map ID (from game)
---- @field door_id? integer # 2-byte door ID (from game)
+--- @field id integer 2-byte event ID (from game)
+--- @field room_id integer 1-byte room ID (from game)
+--- @field world_id integer 1-byte world ID (from game)
+--- @field name string human-readable name of event
+--- @field battle_id? integer 2-byte battle ID (from game)
+--- @field map_id? integer 2-byte map ID (from game)
+--- @field door_id? integer 2-byte door ID (from game)
 local Event = KH2ValueConstant:new{ id = -1, room_id = -1, world_id = -1, name = 'UNKNOWN_EVENT' }
 
---- @param o { id: integer, room_id: integer, world_id: integer, name: string, battle_id?: integer, map_id?: integer, door_id?: integer } # options table
+--- @param o { id: integer, room_id: integer, world_id: integer, name: string, battle_id?: integer, map_id?: integer, door_id?: integer } options table
 --- @return Event # newly instantiated Event
 function Event:new(o)
   local mt = Event:super_mt()

@@ -4,12 +4,12 @@ local KH2ValueConstant = require(BASE_PATH .. 'base_class')
 
 --- KH2 World
 --- @class World:KH2ValueConstant
---- @field id integer # 1-byte world ID (from game)
---- @field name string # human-readable name of world
---- @field short_name string # abbreviated name of world
+--- @field id integer 1-byte world ID (from game)
+--- @field name string human-readable name of world
+--- @field short_name string abbreviated name of world
 local World = KH2ValueConstant:new{ id = -1, name = 'UNKNOWN_WORLD', short_name = 'UNKWN' }
 
---- @param o {id: integer, name: string, short_name: string} # options table
+--- @param o {id: integer, name: string, short_name: string} options table
 --- @return World # newly instantiated World
 function World:new(o)
     local mt = World:super_mt()

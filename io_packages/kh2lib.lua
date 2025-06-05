@@ -27,10 +27,10 @@ KH2_VERSION_STEAM_1_0_0_10 = 0x030A
 
 --- KH2 Lua Library (KH2Lib)
 --- @class (exact) KH2Lib:LegacyKH2Lib
---- @field worlds WorldsLUT
---- @field rooms RoomsLUT
---- @field events EventsLUT
---- @field current table
+--- @field worlds table<WorldId|WorldName, World>
+--- @field rooms table<WorldId|WorldName, table<RoomId|RoomName, Room>>
+--- @field events table<WorldId|WorldName, table<RoomId|RoomName, table<EventId|EventName, Event>>>
+--- @field current GameState
 --- @field private _constants table
 local kh2lib = {}
 
@@ -458,16 +458,6 @@ end
 --- Attach a table `current` to the kh2lib table which provides
 --- shortcuts to values at relevant game state memory addresses
 local function add_game_state_table()
-    --- Shortcut to get current values at common game state addresses
-    --- @class GameState
-    --- @field world integer # current world ID
-    --- @field world_name string # current world name
-    --- @field room integer # current room ID
-    --- @field room_name string # current room name
-    --- @field door integer # current door ID
-    --- @field place integer # concatenation of room ID and world ID in hex
-    --- @field place_name string # current world & room names, separated by hyphen
-    --- @field location string # alias for place_name
     local game_state = {}
 
     --- @type metatable
@@ -475,16 +465,12 @@ local function add_game_state_table()
         --- Defines getters as syntactical sugar for member variables
         --- @param self GameState
         --- @param key 'world'
-        --- |'world_name'
         --- |'room'
-        --- |'room_name'
-        --- |'event'
-        --- |'event_name'
         --- |'door'
+        --- |'event'
         --- |'place'
-        --- |'place_name'
         --- |'location'
-        --- @return integer|string|nil
+        --- @return World|Room|Event|integer|string|nil
         __index = function (self, key)
             local BASE_ADDRESS = kh2lib.Now
             local offsets = kh2lib._constants._offsets
@@ -502,29 +488,32 @@ local function add_game_state_table()
 
             -- read current area value from game before returning
             if key == 'world' then
-                return world_id
-            elseif key == 'world_name' then
                 return worlds[world_id]
             elseif key == 'room' then
-                return room_id
-            elseif key == 'room_name' then
                 return rooms[world_id][room_id]
             elseif key == 'event' then
-                return event_id
-            elseif key == 'event_name' then
                 return events[world_id][room_id][event_id]
             elseif key == 'door' then
                 return ReadShort(BASE_ADDRESS + offsets.now.DOOR)
             elseif key == 'place' then
-                return ReadShort(BASE_ADDRESS + offsets.now.PLACE)
-            elseif key == 'location' or key == 'place_name' then
-                return self.world_name .. ' - ' .. self.room_name
+                return (room_id << 8) + world_id
+            elseif key == 'location' then
+                return self.world.name .. ' - ' .. self.room.name
             end
 
             return nil
         end,
     }
     setmetatable(game_state, mt)
+
+    --- Shortcut to get current values at common game state addresses
+    --- @class GameState
+    --- @field world World current world
+    --- @field room Room current room
+    --- @field door integer current door ID
+    --- @field event Event current event
+    --- @field place integer concatenation of room ID and world ID in hex
+    --- @field location string concatenation of world name and room name, separated by ' - '
     kh2lib.current = game_state
 end
 

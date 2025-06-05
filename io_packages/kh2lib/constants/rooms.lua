@@ -4,12 +4,12 @@ local KH2ValueConstant = require(BASE_PATH .. 'base_class')
 
 --- Room class containing ID value and human-readable name
 --- @class Room: KH2ValueConstant
---- @field id integer # 1-byte room ID (from game)
---- @field world_id integer # 1-byte world ID (from game)
---- @field name string # human-readable name of room
+--- @field id integer 1-byte room ID (from game)
+--- @field world_id integer 1-byte world ID (from game)
+--- @field name string human-readable name of room
 local Room = KH2ValueConstant:new{ id = -1, world_id = -1, name = 'UNKNOWN_ROOM' }
 
---- @param o {id: integer, world_id: integer, name: string} # options table
+--- @param o {id: integer, world_id: integer, name: string} options table
 --- @return Room # newly instantiated Room
 function Room:new(o)
   local mt = Room:super_mt()

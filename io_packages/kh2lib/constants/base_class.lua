@@ -3,19 +3,19 @@
 
 --- Base class consisting of ID value and human-readable name of in-game constant
 --- @class KH2ValueConstant
---- @field id integer # value (ID from game)
---- @field name string # human-readable name
+--- @field id integer value (ID from game)
+--- @field name string human-readable name
 local KH2ValueConstant = {}
 
 --- Convert KH2ValueConstant class to string
---- @return string # human-readable name
+--- @return string human-readable name
 function KH2ValueConstant:tostring()
     return self.name
 end
 
 --- KH2ValueConstant class constructor
---- @param o? {id: number, name: string} # options table
---- @return KH2ValueConstant # newly-instantiated KH2ValueConstant
+--- @param o? {id: number, name: string} options table
+--- @return KH2ValueConstant newly-instantiated KH2ValueConstant
 function KH2ValueConstant:new(o)
     o = o or {}
     setmetatable(o, self)
