@@ -122,7 +122,7 @@ function ReadBoolean(address, absolute) end
 --- @param address address address to read from
 --- @param length integer number of bytes to read
 --- @param absolute? boolean If set to true, the address is taken as written and base address is not added into it. **Default:** `false`.
---- @return table
+--- @return integer[]
 --- Example:
 --- ```lua
 --- local temp_arr = ReadArray(0xBEEFDED, 0x10) -- Reads 16 bytes starting at GameModule+0xBEEFDED
@@ -202,7 +202,7 @@ function WriteBoolean(address, value, absolute) end
 --- Writes `array` to the memory, starting at `address`, relative to the base address.
 --- The array must be made of bytes (8-bit integers).
 --- @param address address address to write to
---- @param array boolean array of bytes to write
+--- @param array integer[] array of bytes to write
 --- @param absolute? boolean If set to true, the address is taken as written and base address is not added into it. **Default:** `false`.
 --- Example:
 --- ```lua
@@ -216,7 +216,7 @@ function WriteArray(address, array, absolute) end
 --- @param address address address to read from
 --- @param offset integer offset to apply to the read value
 --- @param absolute? boolean If set to true, the address is taken as written and base address is not added into it. **Default:** `false`.
---- @return number
+--- @return integer
 --- Example:
 --- ```lua
 --- local pointer = GetPointer(0xBEEFDAD, 0x15) -- Reads the value at GameModule+0xBEEFDAD and adds 0x15 to it.
@@ -292,7 +292,7 @@ function ReadBooleanA(address) end
 
 --- Read `length` bytes from absolute `address` and return the read bytes as an array.
 --- @param address address address to read from
---- @return table
+--- @return integer[]
 --- Example:
 --- ```lua
 --- local temp_arr = ReadArrayA(0xBEEFDED, 0x10) -- Read 16 bytes starting at 0xBEEFDED
@@ -365,7 +365,7 @@ function WriteBooleanA(address, value) end
 --- Write `array` to memory, starting at absolute `address`.
 --- The array must be made of bytes (8-bit integers).
 --- @param address address address to write to
---- @param array table array of bytes to write
+--- @param array integer[] array of bytes to write
 --- Example:
 --- ```lua
 --- local temp_arr = { 0xFE, 0xA5, 0x70 }
@@ -377,6 +377,7 @@ function WriteArrayA(address, array) end
 --- Effectively, read the value at absolute `address` and add `offset` to it. Return the resulting value.
 --- @param address address address to read from
 --- @param offset address offset to apply
+--- @return integer
 --- Example:
 --- ```lua
 --- local pointer = GetPointerA(0xBEEFDAD, 0x15) -- Reads the value at 0xBEEFDAD and adds 0x15 to it.
