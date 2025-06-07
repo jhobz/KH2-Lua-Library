@@ -74,6 +74,14 @@ local function create_rooms_lut()
     return lut
 end
 
+local function get_room_by_id(world_id, room_id)
+    for _, room in ipairs(ROOMS) do
+        if room.world_id == world_id and room.id == room_id then
+            return room
+        end
+    end
+end
+
 --- Create lookup table for events to get names from IDs (uni-directional)
 --- @return {[WorldId|WorldName]: {[RoomId|RoomName]: {[EventId|EventName]: Event}}}
 local function create_events_lut()
@@ -84,7 +92,7 @@ local function create_events_lut()
         local world_id = world.id
         local world_name = upper_snake_case(world.name)
         local world_abbr = world.short_name
-        local room = ROOMS[world_id][event.room_id]
+        local room = get_room_by_id(world_id, event.room_id)
         local room_id = room.id
         local room_name = room.name
         local id = event.id

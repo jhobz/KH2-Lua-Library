@@ -445,7 +445,8 @@ end
 local function add_lookup_tables()
     local status, luts = pcall(require, 'kh2lib.lookup_tables')
     if not status then
-        LogError('Failed to create LUTs for kh2lib constants')
+        LogError('Failed to create LUTs for kh2lib constants (full error below)')
+        LogError(luts)
         return
     end
 
