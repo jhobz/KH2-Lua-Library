@@ -9,9 +9,6 @@ offsets.save = {
     inventory = {},
 }
 
---[[TODO: Needs more info to add to list
-    Save+0x1CF1 STT Dodge Roll, Unknown Disk, Twilight Thorn
---]]
 --- Unused bytes repurposed by mods
 --- @enum (key) CustomOffset
 offsets.save.custom = {
@@ -56,13 +53,14 @@ offsets.save.custom = {
         TWTNW = 0x1EDF,
     },
     GENIE_CRASH_FIX = 0x06B2,
-    ROYAL_SUMMONS = 0x1CF7, -- TODO: how is this different from inventory item?
+    ROYAL_SUMMONS_STORAGE = 0x1CF7,
     STT_STRUGGLE_WEAPON = 0x1CF8,
     STT_KEYBLADE_1 = 0x1CF9,
     STT_KEYBLADE_2 = 0x1CFA,
     STT_TT_FLAG = 0x1CFF,
     MUNNY_POUCH_OLETTE = 0x35C4,
     MUNNY_POUCH_MICKEY = 0x35C5,
+    ITEM_SET1 = 0x1CF1, -- Bitmask for "Dodge Roll got disabled in STT" flag, Unknown Disk, and Twilight Thorn game speed indicator
 }
 
 -- TODO: Sort these
@@ -257,7 +255,9 @@ offsets.save.inventory = {
     SKILL_RECIPE = 0x3654,
     GUARD_RECIPE = 0x3655,
     DUMMY13 = 0x365D,       -- GoA uses this for Royal Summons
-    ROYAL_SUMMONS = 0x365D, -- alias
+    ROYAL_SUMMONS = 0x365D, -- alias for DUMMY13
+    DUMMY15 = 0x365F,       -- GoA uses this for Unknown Disk
+    UNKNOWN_DISK = 0x365F,  -- alias for DUMMY15
     DUMMY16 = 0x3660,       -- GoA uses this for Gained Item Slot
     ROAD_TO_DISCOVERY = 0x3661,
     STRENGTH_BEYOND_STRENGTH = 0x3662,

@@ -482,18 +482,45 @@ local function add_game_state_table()
             local room_id = ReadByte(BASE_ADDRESS + offsets.now.ROOM)
             local event_id = ReadShort(BASE_ADDRESS + offsets.now.EVENT)
 
-            -- Game is still in bootup sequence
-            -- TODO: Probably handle this differently in the future so that
-            -- title screen can actually be detected
-            if world_id == 255 or world_id == 0 or room_id == 255 then return nil end
+            -- #region Error handling
+            -- TODO: feels like there should be a cleaner way to handle this.
+            -- It should only be relevant during game bootup.
 
-            -- read current area value from game before returning
+            local function get_world()
+                local world = worlds[world_id]
+                if not world then
+                    return { id = -1, name = 'UNKNOWN_WORLD', short_name = 'UNKWN' }
+                end
+
+                return world
+            end
+
+            local function get_room()
+                local room = rooms[world_id] and rooms[world_id][room_id]
+                if not room then
+                    return { id = -1, world_id = world_id, name = 'UNKNOWN_ROOM' }
+                end
+
+                return room
+            end
+
+            local function get_event()
+                local event = events[world_id] and events[world_id][room_id] and events[world_id][room_id][event_id]
+                if not event then
+                    return { id = -1, world_id = world_id, room_id = room_id, name = 'UNKNOWN_EVENT' }
+                end
+
+                return event
+            end
+
+            -- #endregion
+
             if key == 'world' then
-                return worlds[world_id]
+                return get_world()
             elseif key == 'room' then
-                return rooms[world_id][room_id]
+                return get_room()
             elseif key == 'event' then
-                return events[world_id][room_id][event_id]
+                return get_event()
             elseif key == 'door' then
                 return ReadShort(BASE_ADDRESS + offsets.now.DOOR)
             elseif key == 'place' then
