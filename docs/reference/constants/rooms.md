@@ -351,7 +351,7 @@ Jump to section:
 |0x04|0x10|The Interceptor: Ship's Hold|
 |0x05|0x10|The Black Pearl|
 |0x06|0x10|The Black Pearl: Captain's Stateroom|
-|0x07|0x10|The Interceptor|
+|0x07|0x10|The Interceptor (UNKNOWN_STATE)|
 |0x08|0x10|Isla de Muerta: Rock Face (1st Visit with The Interceptor)|
 |0x09|0x10|Isla de Muerta: Cave Mouth|
 |0x0A|0x10|Isla de Muerta: Treasure Heap|

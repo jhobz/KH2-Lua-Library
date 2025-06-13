@@ -254,7 +254,7 @@ local rooms = {
   Room:new{ id = 0x04, world_id = 0x10, name = "The Interceptor: Ship's Hold" },
   Room:new{ id = 0x05, world_id = 0x10, name = 'The Black Pearl' },
   Room:new{ id = 0x06, world_id = 0x10, name = "The Black Pearl: Captain's Stateroom" },
-  Room:new{ id = 0x07, world_id = 0x10, name = 'The Interceptor' },
+  Room:new{ id = 0x07, world_id = 0x10, name = 'The Interceptor (UNKNOWN_STATE)' },
   Room:new{ id = 0x08, world_id = 0x10, name = 'Isla de Muerta: Rock Face (1st Visit with The Interceptor)' },
   Room:new{ id = 0x09, world_id = 0x10, name = 'Isla de Muerta: Cave Mouth' },
   Room:new{ id = 0x0A, world_id = 0x10, name = 'Isla de Muerta: Treasure Heap' },
