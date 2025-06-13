@@ -368,7 +368,7 @@ Jump to section:
 |0x15|0x10|The Interceptor (to Port Royal)|
 |0x16|0x10|The Interceptor (to Isla de Muerta)|
 |0x17|0x10|The Black Pearl: Captain's Stateroom|
-|0x18|0x10|Harbor|
+|0x18|0x10|Harbor (UNKNOWN_STATE)|
 |0x19|0x10|Isla de Muerta: Rock Face (1st Visit with The Black Pearl)|
 
 ### Space Paranoids

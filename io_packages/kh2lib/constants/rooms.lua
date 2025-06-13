@@ -271,7 +271,7 @@ local rooms = {
   Room:new{ id = 0x15, world_id = 0x10, name = 'The Interceptor (to Port Royal)' },
   Room:new{ id = 0x16, world_id = 0x10, name = 'The Interceptor (to Isla de Muerta)' },
   Room:new{ id = 0x17, world_id = 0x10, name = "The Black Pearl: Captain's Stateroom" },
-  Room:new{ id = 0x18, world_id = 0x10, name = 'Harbor' },
+  Room:new{ id = 0x18, world_id = 0x10, name = 'Harbor (UNKNOWN_STATE)' },
   Room:new{ id = 0x19, world_id = 0x10, name = 'Isla de Muerta: Rock Face (1st Visit with The Black Pearl)' },
   -- Space Paranoids
   Room:new{ id = 0x00, world_id = 0x11, name = 'Pit Cell' },
